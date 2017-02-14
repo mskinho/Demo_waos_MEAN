@@ -7,11 +7,17 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
 
+//  REDUX
+import { NgReduxModule, DevToolsExtension } from '@angular-redux/store';
+import { NgReduxRouterModule } from '@angular-redux/router';
+
 //  ROUTING APP
 import { APP_ROUTES } from './app.routes';
 
 //  SERVICES 
-import { AuthenticationService, UsersService, AuthInterceptor } from './users/index';
+import { UsersService, AuthInterceptor } from './users/index';
+import {SessionActions} from './core/actions/session.actions';
+import {SessionEpics} from './core/epics';
 
 //  COMPONENTS
 import { AppComponent } from './app.component';
@@ -32,12 +38,15 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    NgReduxModule,
+    NgReduxRouterModule,
     APP_ROUTES,
     MaterialModule.forRoot()
   ],
   providers: [
     AuthInterceptor,
-    AuthenticationService,
+    SessionActions,
+    SessionEpics,
     UsersService
   ],
   bootstrap: [AppComponent]
