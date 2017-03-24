@@ -13,17 +13,25 @@ import { NgReduxRouter } from '@angular-redux/router';
 import { createEpicMiddleware } from 'redux-observable';
 import { rootReducer, middleware, enhancers } from './core/store';
 import { SessionEpics } from './core/epics';
+import { ToggleNavService } from './toggle-nav.service';
 var AppComponent = (function () {
-    function AppComponent(devTools, ngRedux, ngReduxRouter, epics) {
+    function AppComponent(devTools, ngRedux, ngReduxRouter, epics, ToggleNavService) {
+        var _this = this;
         this.devTools = devTools;
         this.ngRedux = ngRedux;
         this.ngReduxRouter = ngReduxRouter;
         this.epics = epics;
+        this.ToggleNavService = ToggleNavService;
         this.title = 'app works!';
+        this.isNormalScreen = true;
         middleware.push(createEpicMiddleware(this.epics.login));
         ngRedux.configureStore(rootReducer, {}, middleware, devTools.isEnabled() ? enhancers.concat([devTools.enhancer()]) :
             enhancers);
         ngReduxRouter.initialize();
+        this.ToggleNavService.toggle().subscribe(function (toggled) {
+            _this.isToggled = toggled;
+        });
+        console.log(this.subscription);
     }
     return AppComponent;
 }());
@@ -31,12 +39,14 @@ AppComponent = __decorate([
     Component({
         selector: 'app-root',
         templateUrl: './app.component.html',
-        styleUrls: ['./app.component.css']
+        styleUrls: ['./app.component.scss'],
+        providers: [ToggleNavService]
     }),
     __metadata("design:paramtypes", [DevToolsExtension,
         NgRedux,
         NgReduxRouter,
-        SessionEpics])
+        SessionEpics,
+        ToggleNavService])
 ], AppComponent);
 export { AppComponent };
 //# sourceMappingURL=../../../../client/app/app.component.js.map

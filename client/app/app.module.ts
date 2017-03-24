@@ -3,12 +3,12 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+// FONT AWESOME
+import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-awesome';
+
 // MATERIAL DESIGN MODULES
 import { MaterialModule, OverlayContainer } from '@angular/material';
 import 'hammerjs';
-
-// FONT AWESOME
-import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-awesome';
 
 
 //  REDUX
@@ -18,7 +18,7 @@ import { NgReduxRouterModule } from '@angular-redux/router';
 //  ROUTING APP
 import { APP_ROUTES } from './app.routes';
 
-//  SERVICES 
+//  SERVICES
 import { UsersService, AuthInterceptor } from './users/index';
 import {SessionActions} from './core/actions/session.actions';
 import {SessionEpics} from './core/epics';
@@ -28,6 +28,7 @@ import { AppComponent } from './app.component';
 import { AppToolbarComponent } from './app-toolbar/index';
 import { LoginComponent, RegisterComponent } from './users/index';
 import { HomeComponent } from './home/home.component';
+import { AppSidenavComponent } from './app-sidenav/index';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { HomeComponent } from './home/home.component';
     AppToolbarComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    AppSidenavComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,7 @@ import { HomeComponent } from './home/home.component';
     AuthInterceptor,
     SessionActions,
     SessionEpics,
-    
+
     UsersService
   ],
   bootstrap: [AppComponent]

@@ -12,11 +12,26 @@ import { Observable } from 'rxjs/Observable';
 import { select } from '@angular-redux/store';
 import { SessionActions } from '../core/actions';
 import { Router } from '@angular/router';
+import { ToggleNavService } from '../toggle-nav.service';
 var AppToolbarComponent = (function () {
-    function AppToolbarComponent(router, actions) {
+    function AppToolbarComponent(router, actions, ToggleNavService) {
         this.router = router;
         this.actions = actions;
+        this.ToggleNavService = ToggleNavService;
+        this.isNormalScreen = true;
+        this.menuList = [];
+        var itemArticle = {
+            state: 'article',
+            title: 'Articles',
+            icon: 'fa-user-secret',
+            roles: ['*'],
+            type: "button"
+        };
+        this.menuList.push(itemArticle);
     }
+    AppToolbarComponent.prototype.toggleNav = function () {
+        this.ToggleNavService.toggle();
+    };
     AppToolbarComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.loggedIn$.subscribe(function (isLoggedIn) {
@@ -24,6 +39,9 @@ var AppToolbarComponent = (function () {
                 _this.router.navigate(['login']);
         }, function (error) {
             _this.router.navigate(['login']);
+        });
+        this.subscription = this.ToggleNavService.toggle().subscribe(function (toggled) {
+            _this.isToggled = toggled;
         });
     };
     AppToolbarComponent.prototype.logout = function () {
@@ -48,10 +66,10 @@ AppToolbarComponent = __decorate([
     Component({
         selector: 'app-app-toolbar',
         templateUrl: './app-toolbar.component.html',
-        styleUrls: ['./app-toolbar.component.css']
+        styleUrls: ['./app-toolbar.component.scss']
     }),
     __metadata("design:paramtypes", [Router,
-        SessionActions])
+        SessionActions, ToggleNavService])
 ], AppToolbarComponent);
 export { AppToolbarComponent };
 //# sourceMappingURL=../../../../../client/app/app-toolbar/app-toolbar.component.js.map

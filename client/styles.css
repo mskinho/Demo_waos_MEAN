@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~https://fonts.googleapis.com/icon?family=Material+Icons';
- 
+
 html,
 body {
   font-family: Roboto, sans-serif;
@@ -10,7 +10,10 @@ body {
   overflow-x: hidden;
   padding: 0;
 }
-
+ul,li{
+  list-style-type : none;
+  padding: 0px;
+}
 *,
 *:before,
 *:after {
