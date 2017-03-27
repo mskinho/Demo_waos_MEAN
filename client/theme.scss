@@ -1,0 +1,31 @@
+@import '~@angular/material/core/theming/all-theme';
+@include md-core();
+$primary: md-palette($md-blue-grey, 900);
+$accent: md-palette($md-cyan, A400);
+$warn:    md-palette($md-red, 600);
+$theme: md-dark-theme($primary, $accent, $warn);
+@include angular-material-theme($theme);
+
+// Define a mixin that accepts a theme and outputs the color styles for the component.
+@mixin basic-frame-theme($theme) {
+  // Extract whichever individual palettes you need from the theme.
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  // Use md-color to extract individual colors from a palette as necessary.
+
+    background-color: white;
+    color:md-color($primary);
+
+}
+@mixin Nav-theme($theme) {
+  // Extract whichever individual palettes you need from the theme.
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  // Use md-color to extract individual colors from a palette as necessary.
+
+    background-color: md-color($primary);
+    border-color: md-color($accent, A400);
+
+}

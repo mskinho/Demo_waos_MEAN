@@ -11,7 +11,7 @@ import { environment } from "../../../environments/environment";
 export class UsersService {
     private _baseUrl : string;
 
-    constructor(private http: Http) { 
+    constructor(private http: Http) {
        // build backend base url
         this._baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
         if (environment.backend.port) {
@@ -29,6 +29,7 @@ export class UsersService {
     // private helper methods
     private jwt() {
         // create authorization header with jwt token
+        console.log("getcurrenUser");
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if (currentUser && currentUser.token) {
             let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
