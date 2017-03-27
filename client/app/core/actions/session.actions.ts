@@ -10,10 +10,9 @@ export class SessionActions {
   static LOGIN_USER_ERROR = 'LOGIN_USER_ERROR';
   static LOGOUT_USER = 'LOGOUT_USER';
 
-  constructor(private ngRedux: NgRedux<IAppState>) {}
+  constructor(private ngRedux: NgRedux<IAppState>) { }
 
   loginUser(credentials) {
-    console.log('credentials:',credentials);
     this.ngRedux.dispatch({
       type: SessionActions.LOGIN_USER,
       payload: credentials,
@@ -21,7 +20,7 @@ export class SessionActions {
   };
 
   logoutUser() {
-    this.ngRedux.dispatch({ type: SessionActions.LOGOUT_USER });
+    return this.ngRedux.dispatch({ type: SessionActions.LOGOUT_USER });
   };
 }
 

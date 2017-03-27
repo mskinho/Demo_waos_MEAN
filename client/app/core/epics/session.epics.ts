@@ -15,7 +15,7 @@ import { environment } from "../../../environments/environment";
 
 @Injectable()
 export class SessionEpics {
-  _baseUrl : string ;  
+  _baseUrl : string ;
   constructor(private http: Http) {
               this._baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
         if (environment.backend.port) {
@@ -27,7 +27,7 @@ export class SessionEpics {
     return action$
       .filter<IPayloadAction>(({ type }) => type === SessionActions.LOGIN_USER)
       .mergeMap<IPayloadAction, IPayloadAction>(({ payload }) => {
-        let backendURL = `${this._baseUrl}${environment.backend.endpoints.signin}` ;  
+        let backendURL = `${this._baseUrl}${environment.backend.endpoints.signin}` ;
         return this.http.post(backendURL, payload)
           .map<Response, IPayloadAction>(result => ({
             type: SessionActions.LOGIN_USER_SUCCESS,
