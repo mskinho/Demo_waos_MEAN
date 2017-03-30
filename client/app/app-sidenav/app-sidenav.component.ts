@@ -5,7 +5,7 @@ import { ToggleNavService } from '../toggle-nav.service';
 import { Subscription } from 'rxjs/Subscription';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../core/store';
-
+import { MenuService } from '../core/services/menu.client.service';
 @Component({
   selector: 'app-app-sidenav',
   templateUrl: './app-sidenav.component.html',
@@ -22,21 +22,8 @@ export class AppSidenavComponent implements OnInit {
   state:Object;
   @select(s => s.session.token) loggedIn$: Observable<boolean>;
   @ViewChild('sidenav') sidenav: ElementRef;
-  constructor(private ToggleNavService: ToggleNavService, private ngRedux: NgRedux<IAppState>) {
-    let homeItem = {
-      state: 'home',
-      title: 'Home',
-      icon: 'fa-home',
-      roles: ['*']
-    }
-    let articleItem = {
-      state: 'article',
-      title: 'Articles',
-      icon: 'fa-user-secret',
-      roles: ['*']
-    }
-    this.menuList.push(homeItem);
-    this.menuList.push(articleItem);
+  constructor(private ToggleNavService: ToggleNavService, private ngRedux: NgRedux<IAppState>, private menuService : MenuService) {
+    this.menuList =menuService.getMenu('sideNav').items;
     //subscribe toggle service
     this.subscription = this.ToggleNavService.toggle().subscribe(toggled => {
       this.isToggled = toggled;
