@@ -22,13 +22,14 @@ import { APP_ROUTES } from './app.routes';
 import { UsersService, AuthInterceptor } from './users/index';
 import {SessionActions} from './core/actions/session.actions';
 import {SessionEpics} from './core/epics';
-
+import {MenuService} from './core/services/menu.client.service';
 //  COMPONENTS
 import { AppComponent } from './app.component';
 import { AppToolbarComponent } from './app-toolbar/index';
 import { LoginComponent, RegisterComponent } from './users/index';
-import { HomeComponent } from './home/home.component';
 import { AppSidenavComponent } from './app-sidenav/index';
+import { HomeModule } from './home/index';
+import { ArticlesModule } from './articles/index';
 
 
 @NgModule({
@@ -37,7 +38,6 @@ import { AppSidenavComponent } from './app-sidenav/index';
     AppToolbarComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent,
     AppSidenavComponent
   ],
   imports: [
@@ -48,6 +48,8 @@ import { AppSidenavComponent } from './app-sidenav/index';
     NgReduxModule,
     NgReduxRouterModule,
     APP_ROUTES,
+    HomeModule,
+    ArticlesModule,
     Angular2FontAwesomeModule,
     MaterialModule.forRoot()
   ],
@@ -56,7 +58,7 @@ import { AppSidenavComponent } from './app-sidenav/index';
     AuthInterceptor,
     SessionActions,
     SessionEpics,
-
+    MenuService,
     UsersService
   ],
   bootstrap: [AppComponent]

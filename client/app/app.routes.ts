@@ -7,11 +7,8 @@ import { RouterModule, Routes } from '@angular/router';
  import { AuthInterceptor } from './users/index';
 
 const ROUTES: Routes = [
-     { path: '', component: HomeComponent, canActivate: [AuthInterceptor]  },
-     { path: '', component: HomeComponent },
      { path: 'login', component: LoginComponent },
      { path: 'register', component: RegisterComponent },
-
      // otherwise redirect to home
      { path: '**', redirectTo: '' }
 ];
