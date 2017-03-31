@@ -6,6 +6,10 @@ import { HomeConfig } from './index';
 import { MaterialModule, OverlayContainer } from '@angular/material';
 import { HOME_ROUTES } from './index';
 
+export function homeFactory(config: HomeConfig) {
+  return () => config.addMenu() ;
+}
+
 @NgModule({
   imports: [
     HOME_ROUTES,
@@ -16,7 +20,7 @@ import { HOME_ROUTES } from './index';
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [ HomeConfig, OverlayContainer,
-  { provide: APP_INITIALIZER, useFactory: (config: HomeConfig) => () => config.addMenu(), deps: [HomeConfig], multi: true }
+  { provide: APP_INITIALIZER, useFactory: homeFactory, deps: [HomeConfig], multi: true }
 ],
 
 })

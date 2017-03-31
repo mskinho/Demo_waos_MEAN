@@ -9,6 +9,10 @@ import { platformBrowser } from '@angular/platform-browser';
 import { MaterialModule, OverlayContainer } from '@angular/material';
 import { ARTICLES_ROUTES } from './index';
 
+export function articlesFactory(config: ArticlesConfig) {
+  return () => config.addMenu() ;
+}
+
 @NgModule({
   imports: [
     ARTICLES_ROUTES
@@ -18,7 +22,7 @@ import { ARTICLES_ROUTES } from './index';
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [ ArticlesConfig, OverlayContainer,
-  { provide: APP_INITIALIZER, useFactory: (config: ArticlesConfig) => () => config.addMenu(), deps: [ArticlesConfig], multi: true }
+  { provide: APP_INITIALIZER, useFactory: articlesFactory, deps: [ArticlesConfig], multi: true }
 ],
 
 })
