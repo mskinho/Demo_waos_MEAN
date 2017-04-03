@@ -3,6 +3,7 @@ import {TypedRecord} from 'typed-immutable-record';
 export interface IUser {
   firstName: string;
   lastName: string;
+  roles : Array<string>
 };
 
 export interface IUserRecord extends TypedRecord<IUserRecord>, IUser {

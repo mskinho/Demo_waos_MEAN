@@ -23,6 +23,7 @@ export const sessionReducer = (
 
     case SessionActions.LOGIN_USER_SUCCESS:
       console.log('state:', state);
+      localStorage.setItem('currentUser', JSON.stringify(UserFactory(action.payload.user)));
       return state.merge({
         token: action.payload.token,
         user: UserFactory(action.payload.user),
@@ -41,10 +42,12 @@ export const sessionReducer = (
     case SessionActions.LOGOUT_USER:
       console.log("logout user state", action, state);
       console.log(INITIAL_STATE);
+      localStorage.removeItem('currentUser');
       return INITIAL_STATE;
 
     case actionTypes.INIT:
       const persistedState = action.payload;
+      console.log('persistedState', persistedState);
       if (persistedState) {
         return state.merge({
           token: persistedState.session.token,

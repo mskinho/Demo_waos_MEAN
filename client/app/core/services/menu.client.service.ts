@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 @Injectable()
 export class MenuService {
   constructor() {
@@ -11,6 +10,27 @@ export class MenuService {
   defaultRoles =  ['user', 'admin'];
   ngOnInit(){
   }
+  private shouldRender(userRoles, itemMenuRoles) {
+    if (itemMenuRoles.indexOf('*') !== -1) {
+      return true;
+    } else {
+      if (!userRoles) {
+        return false;
+      }
+
+      for (var userRoleIndex in userRoles) {
+        if (userRoles.hasOwnProperty(userRoleIndex)) {
+          for (var roleIndex in itemMenuRoles) {
+            if (itemMenuRoles.hasOwnProperty(roleIndex) && itemMenuRoles[roleIndex] === userRoles[userRoleIndex]) {
+              return true;
+            }
+          }
+        }
+      }
+    }
+
+    return false;
+  };
   addMenu(menuId, options){
     options = options || {};
       // Create the new menu
@@ -34,7 +54,8 @@ export class MenuService {
         class: options.class,
         roles: ((options.roles === null || typeof options.roles === 'undefined') ? this.defaultRoles : options.roles),
         position: options.position || 0,
-        items: []
+        items: [],
+        shouldRender: this.shouldRender
       });
     }
     return this.menus[menuId];
@@ -61,7 +82,6 @@ export class MenuService {
   }
   validateMenuItemExistence(state, menuId){
     for(var item in this.menus[menuId].items ){
-      console.log(this.menus[menuId].items[item].state === state)
       if(this.menus[menuId].items[item].state === state)
       return false;
     }

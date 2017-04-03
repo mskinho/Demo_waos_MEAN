@@ -9,8 +9,8 @@ import { environment } from "../../../environments/environment";
 
 @Injectable()
 export class UsersService {
-    private _baseUrl : string;
 
+    private _baseUrl : string;
     constructor(private http: Http) {
        // build backend base url
         this._baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
@@ -18,15 +18,13 @@ export class UsersService {
             this._baseUrl += `:${environment.backend.port}`;
         }
     }
-
-
     signup(user: User): Observable<any> {
-      console.log('user',user);
         let backendURL = `${this._baseUrl}${environment.backend.endpoints.signup}` ;
         return this.http.post(backendURL, user).map((response: Response) => response.json());
     }
-
-
+    Auth(){
+      return JSON.parse(localStorage.getItem('currentUser'));
+    }
     // private helper methods
     private jwt() {
         // create authorization header with jwt token

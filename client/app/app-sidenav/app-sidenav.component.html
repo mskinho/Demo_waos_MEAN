@@ -12,7 +12,7 @@
 
       <ul>
         <li *ngFor="let item of menuList">
-          <div>
+          <div *ngIf="item.shouldRender(state.session.user.roles,item.roles)">
             <a *ngIf="loggedIn$ | async" href="{{item.state}}"><i class="fa {{item.icon}} fa-fw"></i><span [innerHtml]="item.title"></span></a>
             <a *ngIf="!(loggedIn$ | async)" href="{{item.state}}"><i class="fa {{item.icon}} fa-fw"></i><span [innerHtml]="item.title"></span></a>
           </div>

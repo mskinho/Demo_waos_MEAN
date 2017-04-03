@@ -2,7 +2,7 @@ import { makeTypedFactory } from 'typed-immutable-record';
 export var UserFactory = makeTypedFactory({
     firstName: null,
     lastName: null
-});
+  });
 export var INITIAL_USER_STATE = UserFactory();
 export var SessionFactory = makeTypedFactory({
     token: null,
