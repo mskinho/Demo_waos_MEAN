@@ -23,6 +23,8 @@ import { UsersService, AuthInterceptor } from './users/index';
 import {SessionActions} from './core/actions/session.actions';
 import {SessionEpics} from './core/epics';
 import {MenuService} from './core/services/menu.client.service';
+import { Auth } from './users/services/auth.service'
+
 //  COMPONENTS
 import { AppComponent } from './app.component';
 import { AppToolbarComponent } from './app-toolbar/index';
@@ -59,7 +61,8 @@ import { ArticlesModule } from './articles/index';
     SessionActions,
     SessionEpics,
     MenuService,
-    UsersService
+    UsersService,
+    Auth
   ],
   bootstrap: [AppComponent]
 })

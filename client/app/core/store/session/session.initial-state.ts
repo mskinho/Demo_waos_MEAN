@@ -9,7 +9,8 @@ import { makeTypedFactory } from 'typed-immutable-record';
 
 export const UserFactory = makeTypedFactory<IUser, IUserRecord>({
   firstName: null,
-  lastName: null
+  lastName: null,
+  roles:null
 });
 
 export const INITIAL_USER_STATE = UserFactory();

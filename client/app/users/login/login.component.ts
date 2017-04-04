@@ -7,6 +7,7 @@ import {Observable} from 'rxjs/Observable';
 import {NgReduxRouter} from '@angular-redux/router';
 import {  IAppState} from '../../core/store';
 import { NgRedux } from '@angular-redux/store';
+import { UsersService } from '../services/index';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,8 @@ export class LoginComponent implements OnInit {
     private ngReduxRouter: NgReduxRouter,
     private router: Router,
     private actions: SessionActions,
-    private ngRedux:NgRedux<IAppState>) {
+    private ngRedux:NgRedux<IAppState>,
+    private usersService:UsersService ) {
     this.form = this._buildForm();
   }
 
@@ -61,7 +63,4 @@ export class LoginComponent implements OnInit {
       password: new FormControl('', Validators.required)
     });
   }
-
-
-
 }
