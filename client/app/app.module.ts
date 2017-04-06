@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -40,10 +40,12 @@ import { ArticlesModule } from './articles/index';
     AppToolbarComponent,
     LoginComponent,
     RegisterComponent,
-    AppSidenavComponent
+    AppSidenavComponent,
+
+
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     ReactiveFormsModule,
     FormsModule,
     HttpModule,
@@ -53,7 +55,7 @@ import { ArticlesModule } from './articles/index';
     HomeModule,
     ArticlesModule,
     Angular2FontAwesomeModule,
-    MaterialModule.forRoot()
+    MaterialModule
   ],
   providers: [
     OverlayContainer,
