@@ -9,6 +9,7 @@ import {  IAppState} from '../../core/store';
 import { NgRedux } from '@angular-redux/store';
 import { UsersService } from '../services/index';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,7 +18,7 @@ import { UsersService } from '../services/index';
 export class LoginComponent implements OnInit {
   returnUrl: string;
   @select(['session', 'isLoading']) isLoading$: Observable<boolean>;
-  @select(s => !!s.session.token) loggedIn$: Observable<boolean>;
+  @select(LoginComponent.isLoggedOut) loggedIn$: Observable<boolean>;
   form: FormGroup;
 
   constructor(
@@ -63,4 +64,8 @@ export class LoginComponent implements OnInit {
       password: new FormControl('', Validators.required)
     });
   }
+
+
+  static isLoggedOut(s){ return !s.session.token; }
+
 }
