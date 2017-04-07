@@ -34,6 +34,7 @@
     position: absolute;
     text-align: center;
     width: 100%;
+    color: white;
   }
  /*toggle class*/
   &.toggled {
@@ -151,6 +152,7 @@
   padding: 0;
   position: absolute;
   width: 100%;
+  overflow-x: hidden;
 }
 
 .wrapper.toggled .sidebar-nav .user {
@@ -160,6 +162,10 @@
 .sidenav .sidebar-nav .user a {
   color: #fff;
   text-decoration: none;
+  padding:10px 20px;
+}
+.sidenav .sidebar-nav .user a md-icon {
+  margin-right: 30px;
 }
 
 .sidenav .sidebar-nav .user .image {

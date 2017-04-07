@@ -28,21 +28,16 @@ import { Auth } from './users/services/auth.service'
 //  COMPONENTS
 import { AppComponent } from './app.component';
 import { AppToolbarComponent } from './app-toolbar/index';
-import { LoginComponent, RegisterComponent } from './users/index';
 import { AppSidenavComponent } from './app-sidenav/index';
 import { HomeModule } from './home/index';
 import { ArticlesModule } from './articles/index';
-
+import {UsersModule} from './users/index';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppToolbarComponent,
-    LoginComponent,
-    RegisterComponent,
-    AppSidenavComponent,
-
-
+    AppSidenavComponent
   ],
   imports: [
     CommonModule,
@@ -55,7 +50,8 @@ import { ArticlesModule } from './articles/index';
     HomeModule,
     ArticlesModule,
     Angular2FontAwesomeModule,
-    MaterialModule.forRoot()
+    MaterialModule.forRoot(),
+    UsersModule
   ],
   providers: [
     OverlayContainer,

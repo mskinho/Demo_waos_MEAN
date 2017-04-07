@@ -12,7 +12,8 @@ export const environment = {
         endpoints: {
             signup: '/api/auth/signup',
             signin: '/api/auth/signin',
-            articles :'/api/articles'
+            articles :'/api/articles',
+            me : '/api/users/me'
         }
     }
 };
