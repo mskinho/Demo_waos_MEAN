@@ -55,7 +55,7 @@ import { ArticlesModule } from './articles/index';
     HomeModule,
     ArticlesModule,
     Angular2FontAwesomeModule,
-    MaterialModule
+    MaterialModule.forRoot()
   ],
   providers: [
     OverlayContainer,

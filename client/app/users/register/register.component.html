@@ -7,13 +7,13 @@
                 <tr>
                     <td>
                         <md-input-container style="width: 100%">
-                            <input md-input placeholder="First Name" formControlName="firstName"  name="firstName" required>
+                            <input mdInput placeholder="First Name" formControlName="firstName"  name="firstName" required>
                         </md-input-container>
                         <span class="error" *ngIf="f.submitted && form.controls.firstName.invalid"><br>First Name is required</span>
                     </td>
                       <td>
                         <md-input-container style="width: 100%">
-                            <input md-input placeholder="Last Name" formControlName="lastName"  name="lastName" required>
+                            <input mdInput placeholder="Last Name" formControlName="lastName"  name="lastName" required>
                         </md-input-container>
                         <span class="error" *ngIf="f.submitted && form.controls.lastName.invalid"><br>Last Name is required</span>
                     </td>
@@ -23,7 +23,7 @@
                <tr>
                     <td>
                         <md-input-container style="width: 100%">
-                            <input md-input class="form-control" type="text" formControlName="username" placeholder="Username"  name="username" required >
+                            <input mdInput class="form-control" type="text" formControlName="username" placeholder="Username"  name="username" required >
                         </md-input-container>
                         <span class="error" *ngIf="f.submitted && form.controls.username.invalid"><br>Username is required</span>
                     </td>
@@ -32,7 +32,7 @@
                <tr>
                     <td>
                         <md-input-container style="width: 100%">
-                            <input md-input class="form-control" type="text" formControlName="email" placeholder="Email"  name="email" required >
+                            <input mdInput class="form-control" type="text" formControlName="email" placeholder="Email"  name="email" required >
                         </md-input-container>
                         <span class="error" *ngIf="f.submitted && form.controls.email.invalid"><br>Email is required</span>
                     </td>
@@ -41,7 +41,7 @@
                <tr>
                     <td>
                         <md-input-container style="width: 100%">
-                            <input md-input class="form-control" type="password" formControlName="password" placeholder="Password"  name="password" required >
+                            <input mdInput class="form-control" type="password" formControlName="password" placeholder="Password"  name="password" required >
                         </md-input-container>
                         <span class="error" *ngIf="f.submitted && form.controls.password.invalid"><br>Password is required</span>
                     </td>
