@@ -22,15 +22,20 @@ export class UsersService {
         let backendURL = `${this._baseUrl}${environment.backend.endpoints.signup}` ;
         return this.http.post(backendURL, user).map((response: Response) => response.json());
     }
+
     Auth(){
       return JSON.parse(localStorage.getItem('currentUser'));
     }
+
+    getProfile (token): Observable<any> {
+      let backendURL = `${this._baseUrl}${environment.backend.endpoints.me}` ;
+      return this.http.get(backendURL, this.jwt(token)).map((response: Response) => response.json());
+    }
     // private helper methods
-    private jwt() {
+    private jwt(token) {
         // create authorization header with jwt token
-        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        if (currentUser && currentUser.token) {
-            let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+        if (token) {
+            let headers = new Headers({ 'Authorization': 'JWT ' + token });
             return new RequestOptions({ headers: headers });
         }
     }

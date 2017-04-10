@@ -2,13 +2,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 // APP COMPONENTS
 
- import { HomeComponent } from './home/index';
- import { LoginComponent, RegisterComponent } from './users/index';
+
  import { AuthInterceptor } from './users/index';
 
 const ROUTES: Routes = [
-     { path: 'login', component: LoginComponent },
-     { path: 'register', component: RegisterComponent },
      // otherwise redirect to home
      { path: '**', redirectTo: '' }
 ];

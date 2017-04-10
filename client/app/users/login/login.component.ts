@@ -41,7 +41,9 @@ export class LoginComponent implements OnInit {
       isLoggedIn => {
         console.log('this.returnUrl:', this.returnUrl);
         if (isLoggedIn) {
-          console.log("is loggedIn");
+          console.log("is loggedIn", isLoggedIn);
+
+          // localStorage.setItem('currentUser', JSON.stringify({'token':}));
           this.router.navigate([this.returnUrl]);
         }
 

@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -28,22 +28,19 @@ import { Auth } from './users/services/auth.service'
 //  COMPONENTS
 import { AppComponent } from './app.component';
 import { AppToolbarComponent } from './app-toolbar/index';
-import { LoginComponent, RegisterComponent } from './users/index';
 import { AppSidenavComponent } from './app-sidenav/index';
 import { HomeModule } from './home/index';
 import { ArticlesModule } from './articles/index';
-
+import {UsersModule} from './users/index';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppToolbarComponent,
-    LoginComponent,
-    RegisterComponent,
     AppSidenavComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     ReactiveFormsModule,
     FormsModule,
     HttpModule,
@@ -53,7 +50,8 @@ import { ArticlesModule } from './articles/index';
     HomeModule,
     ArticlesModule,
     Angular2FontAwesomeModule,
-    MaterialModule.forRoot()
+    MaterialModule.forRoot(),
+    UsersModule
   ],
   providers: [
     OverlayContainer,

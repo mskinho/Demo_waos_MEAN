@@ -22,7 +22,7 @@
     "@angular/core": "^2.3.1",
     "@angular/forms": "^2.3.1",
     "@angular/http": "^2.3.1",
-    "@angular/material": "2.0.0-beta.1",
+    "@angular/material": "^2.0.0-beta.2",
     "@angular/platform-browser": "^2.3.1",
     "@angular/platform-browser-dynamic": "^2.3.1",
     "@angular/router": "^3.3.1",
@@ -65,7 +65,6 @@
     "sass-loader": "^6.0.3",
     "ts-node": "1.2.1",
     "tslint": "^4.3.0",
-    "typed-immutable-record": "0.0.6",
-    "typescript": "~2.0.3"
+    "typed-immutable-record": "0.0.6"
   }
 }
