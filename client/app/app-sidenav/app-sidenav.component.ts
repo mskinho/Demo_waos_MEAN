@@ -31,9 +31,14 @@ export class AppSidenavComponent implements OnInit {
       this.isToggled = toggled;
     });
     this.state=this.ngRedux.getState();
+
+  }
+  ngOnInit() {
+    this.ngRedux.subscribe(() =>{
+      this.state=this.ngRedux.getState();
+    })
   }
   static isLoggedIn(s){ return s.session.token; }
-  ngOnInit() { }
   ngAfterViewInit() {
     var sidenav = this.sidenav.nativeElement;
     console.log(sidenav); // or whatever
