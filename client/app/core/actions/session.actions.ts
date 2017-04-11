@@ -14,7 +14,10 @@ export class SessionActions {
   static PUT_USER_ERROR = 'PUT_USER_ERROR';
   static GET_USER = 'GET_USER';
   static GET_USER_SUCCESS = 'GET_USER_SUCCESS';
-  static GET_USER_ERROR = 'GET_USER_ERROR'
+  static GET_USER_ERROR = 'GET_USER_ERROR';
+  static CHANGE_PASSWORD = 'CHANGE_PASSWORD';
+  static CHANGE_PASSWORD_SUCCESS ='CHANGE_PASSWORD_SUCCESS';
+  static CHANGE_PASSWORD_ERROR = 'CHANGE_PASSWORD_ERROR';
   constructor(private ngRedux: NgRedux<IAppState>) { }
 
   loginUser(credentials) {
@@ -38,6 +41,12 @@ export class SessionActions {
     this.ngRedux.dispatch({
       type: SessionActions.GET_USER,
       payload: {}
+    });
+  }
+  changePassword(passwords){
+    this.ngRedux.dispatch({
+      type: SessionActions.CHANGE_PASSWORD,
+      payload: passwords
     });
   }
 }

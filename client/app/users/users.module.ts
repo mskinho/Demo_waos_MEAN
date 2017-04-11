@@ -10,6 +10,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { ProfileComponent } from './settings/profile/profile.component';
+import { PasswordComponent } from './settings/password/password.component';
+import { EqualValidator } from './settings/password/equal-validator.directive';
 
 @NgModule({
   imports: [
@@ -24,7 +26,9 @@ import { ProfileComponent } from './settings/profile/profile.component';
     LoginComponent,
     RegisterComponent,
     SettingsComponent,
-    ProfileComponent
+    ProfileComponent,
+    PasswordComponent,
+    EqualValidator
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [ UsersConfig, OverlayContainer],

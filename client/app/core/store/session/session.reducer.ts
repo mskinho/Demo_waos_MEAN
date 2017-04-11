@@ -107,6 +107,32 @@ export const sessionReducer = (
             isLoading: false,
             hasMessage:null
         });
+
+        case SessionActions.CHANGE_PASSWORD:
+          return state.merge({
+            token : JSON.parse(localStorage.getItem('token')).token,
+            user: UserFactory(JSON.parse(localStorage.getItem('currentUser'))),
+            hasError: false,
+            isLoading: false,
+            hasMessage:null
+        });
+        case SessionActions.CHANGE_PASSWORD_SUCCESS:
+        console.log(action.payload);
+          return state.merge({
+            token : JSON.parse(localStorage.getItem('token')).token,
+            user:  UserFactory(JSON.parse(localStorage.getItem('currentUser'))),
+            hasMessage : action.payload,
+            hasError: false,
+            isLoading: false
+          });
+          case SessionActions.CHANGE_PASSWORD_ERROR:
+            return state.merge({
+              token : JSON.parse(localStorage.getItem('token')).token,
+              user:  UserFactory(JSON.parse(localStorage.getItem('currentUser'))),
+              hasMessage : action.payload,
+              hasError: false,
+              isLoading: false
+            });
     default:
       return state;
   }
