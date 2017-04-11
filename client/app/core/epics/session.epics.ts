@@ -45,7 +45,7 @@ export class SessionEpics {
         return this.http.put(backendURL,payload,this.jwt(this.getToken()))
           .map<Response, IPayloadAction>(result => ({
             type: SessionActions.PUT_USER_SUCCESS,
-            payload: {type : 'success',message: 'Profile Saved Successfully'}
+            payload:{user : result.json(), hasMessage : {type : 'success',message: 'Profile Saved Successfully'}}
           }))
           .catch<any, Action>(() => Observable.of({
             type: SessionActions.PUT_USER_ERROR,
@@ -55,6 +55,23 @@ export class SessionEpics {
         });
     }
 
+    getProfile = (action$: Observable<IPayloadAction>) => {
+      return action$
+        .filter<IPayloadAction>(({ type }) => type === SessionActions.GET_USER)
+        .mergeMap<IPayloadAction, IPayloadAction>(({ payload }) => {
+          let backendURL = `${this._baseUrl}${environment.backend.endpoints.users}/me` ;
+          return this.http.get(backendURL,this.jwt(this.getToken()))
+            .map<Response, IPayloadAction>(result => ({
+              type: SessionActions.GET_USER_SUCCESS,
+              payload: result.json()
+            }))
+            .catch<any, Action>(() => Observable.of({
+              type: SessionActions.GET_USER_ERROR,
+              payload: {type : 'echec',message: 'An error occurred'}
+
+            }));
+          });
+      }
     private getToken(){
       return JSON.parse(localStorage.getItem('token')).token;
     }

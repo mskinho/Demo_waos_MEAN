@@ -64,10 +64,11 @@ export const sessionReducer = (
         });
       }
         case SessionActions.PUT_USER_SUCCESS:
+          localStorage.setItem('currentUser',JSON.stringify(UserFactory(action.payload.user)))
           return state.merge({
             token : JSON.parse(localStorage.getItem('token')).token,
-            user: UserFactory(JSON.parse(localStorage.getItem('currentUser'))),
-            hasMessage : action.payload,
+            user: UserFactory(action.payload.user),
+            hasMessage : action.payload.hasMessage,
             hasError: false,
             isLoading: false
           });
@@ -78,8 +79,33 @@ export const sessionReducer = (
             user: INITIAL_USER_STATE,
             hasError: true,
             isLoading: false,
-            message:'error'
+            hasMessage:null
 
+        });
+        case SessionActions.GET_USER_ERROR:
+          return state.merge({
+            token: null,
+            user: INITIAL_USER_STATE,
+            hasError: true,
+            isLoading: false,
+            hasMessage:null
+
+        });
+        case SessionActions.GET_USER:
+          return state.merge({
+            token : JSON.parse(localStorage.getItem('token')).token,
+            user: UserFactory(JSON.parse(localStorage.getItem('currentUser'))),
+            hasError: false,
+            isLoading: false,
+            hasMessage:null
+        });
+        case SessionActions.GET_USER_SUCCESS:
+          return state.merge({
+            token : JSON.parse(localStorage.getItem('token')).token,
+            user: UserFactory(action.payload),
+            hasError: false,
+            isLoading: false,
+            hasMessage:null
         });
     default:
       return state;

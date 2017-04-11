@@ -12,7 +12,9 @@ export class SessionActions {
   static PUT_USER = 'PUT_USER';
   static PUT_USER_SUCCESS = 'PUT_USER_SUCCESS';
   static PUT_USER_ERROR = 'PUT_USER_ERROR';
-
+  static GET_USER = 'GET_USER';
+  static GET_USER_SUCCESS = 'GET_USER_SUCCESS';
+  static GET_USER_ERROR = 'GET_USER_ERROR'
   constructor(private ngRedux: NgRedux<IAppState>) { }
 
   loginUser(credentials) {
@@ -30,6 +32,12 @@ export class SessionActions {
     this.ngRedux.dispatch({
       type: SessionActions.PUT_USER,
       payload: user,
+    });
+  }
+  getProfile() {
+    this.ngRedux.dispatch({
+      type: SessionActions.GET_USER,
+      payload: {}
     });
   }
 }

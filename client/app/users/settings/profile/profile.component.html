@@ -15,8 +15,7 @@
       <input mdInput [(ngModel)]="user.username" type="text" id="username" placeholder="Username" name="username" lowercase required class="md2 md-input" />
     </md-input-container>
   </div>
-
-    <div class="center-align">
+      <div class="center-align">
       <button (click)="saveProfile(user)" md-raised-button color="primary" type="button">Save Profile</button>
     </div>
     <div *ngIf="state?.session.hasMessage?.get('type')==='success'" class="center-align text-success">

@@ -3,7 +3,9 @@ import {TypedRecord} from 'typed-immutable-record';
 export interface IUser {
   firstName: string;
   lastName: string;
-  roles : Array<string>
+  roles : Array<string>;
+  username :string;
+  email :string;
 };
 export interface IMessage {
   type: string;

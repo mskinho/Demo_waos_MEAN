@@ -28,7 +28,8 @@ export class AppComponent {
   subscription: Subscription;
   EPICS = combineEpics(
     this.epics.login,
-    this.epics.editProfile
+    this.epics.editProfile,
+    this.epics.getProfile
   );
   constructor(
     private devTools: DevToolsExtension,

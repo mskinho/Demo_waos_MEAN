@@ -18,7 +18,7 @@ import { UsersService } from '../services/index';
 export class LoginComponent implements OnInit {
   returnUrl: string;
   @select(['session', 'isLoading']) isLoading$: Observable<boolean>;
-  @select(s => s.session.token) loggedIn$: Observable<boolean>;
+  @select(['session', 'token']) loggedIn$: Observable<boolean>;
 
   form: FormGroup;
 
