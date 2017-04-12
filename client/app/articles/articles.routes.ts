@@ -9,14 +9,14 @@ const ARTICLESROUTES: Routes = [{
         component: ArticlesComponent,
         canActivate: [Auth],
         data : {
-          roles : ['user']
+          roles : ['user', 'admin']
         }
       },{
         path: 'list-articles/article/:id',
         component: DetailsComponent,
         canActivate: [Auth],
         data : {
-          roles : ['user']
+          roles : ['user', 'admin']
         }
       }
     ];
