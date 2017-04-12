@@ -72,6 +72,24 @@ export class SessionEpics {
             }));
           });
       }
+ changePassword = (action$: Observable<IPayloadAction>) => {
+   return action$
+     .filter<IPayloadAction>(({ type }) => type === SessionActions.CHANGE_PASSWORD)
+     .mergeMap<IPayloadAction, IPayloadAction>(({ payload }) => {
+       let backendURL = `${this._baseUrl}${environment.backend.endpoints.users}/password` ;
+       return this.http.post(backendURL,payload, this.jwt(this.getToken()))
+         .map<Response, IPayloadAction>(result => ({
+           type: SessionActions.CHANGE_PASSWORD_SUCCESS,
+           payload: {type : 'success',message:result.json().message}
+         }))
+         .catch<any, Action>((result) => Observable.of({
+           type: SessionActions.CHANGE_PASSWORD_ERROR,
+           payload: {type : 'echec',message: result.json().message}
+
+         }));
+       });
+   }
+
     private getToken(){
       return JSON.parse(localStorage.getItem('token')).token;
     }

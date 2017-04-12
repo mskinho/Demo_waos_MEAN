@@ -18,10 +18,8 @@ export class ProfileComponent implements OnInit {
                 private actions : SessionActions, private ngRedux: NgRedux<IAppState> ) {
   this.ngRedux.subscribe(() =>{
     this.state=this.ngRedux.getState();
-    console.log(this.state);
     this.user = JSON.parse(JSON.stringify(this.state)).session.user;
   })
-
  }
 
   ngOnInit() {

@@ -29,7 +29,8 @@ export class AppComponent {
   EPICS = combineEpics(
     this.epics.login,
     this.epics.editProfile,
-    this.epics.getProfile
+    this.epics.getProfile,
+    this.epics.changePassword
   );
   constructor(
     private devTools: DevToolsExtension,
