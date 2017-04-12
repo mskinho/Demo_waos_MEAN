@@ -20,7 +20,6 @@ export const sessionReducer = (
       });
 
     case SessionActions.LOGIN_USER_SUCCESS:
-      console.log('state:', action.payload.user);
       localStorage.setItem('currentUser', JSON.stringify(UserFactory(action.payload.user)));
       return state.merge({
         token: action.payload.token,
@@ -56,7 +55,7 @@ export const sessionReducer = (
       case SessionActions.PUT_USER :
        {
         return state.merge({
-          token : JSON.parse(localStorage.getItem('token')).token,
+          // token : JSON.parse(localStorage.getItem('token')).token,
           user: UserFactory(JSON.parse(localStorage.getItem('currentUser'))),
           hasMessage: action.payload,
           hasError: false,

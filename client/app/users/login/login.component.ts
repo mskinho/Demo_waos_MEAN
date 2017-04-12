@@ -18,7 +18,7 @@ import { UsersService } from '../services/index';
 export class LoginComponent implements OnInit {
   returnUrl: string;
   @select(['session', 'isLoading']) isLoading$: Observable<boolean>;
-  @select(['session', 'token']) loggedIn$: Observable<boolean>;
+  @select(['session', 'token']) loggedIn$: Observable<string>;
 
   form: FormGroup;
 
@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     this.loggedIn$.subscribe(
       isLoggedIn => {
-        console.log('this.returnUrl:', this.returnUrl);
         if (isLoggedIn) {
           localStorage.setItem('token', JSON.stringify({'token': isLoggedIn}));
           this.router.navigate([this.returnUrl]);
