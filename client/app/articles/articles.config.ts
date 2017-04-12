@@ -10,7 +10,7 @@ export class ArticlesConfig {
       state: '#/list-articles',
       title: 'Articles',
       icon: 'fa-file',
-      roles: ['user'],
+      roles: ['user', 'admin'],
     })
   }
 }

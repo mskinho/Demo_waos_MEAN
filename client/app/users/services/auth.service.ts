@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
 import { CanActivate }    from '@angular/router';
 import { UsersService } from './users.service'
-
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from '../../core/store';
 @Injectable()
 export class Auth implements CanActivate{
-  constructor(private usersService : UsersService) {  }
-  currentUser = this.usersService.Auth();
-  userRoles = this.currentUser?this.currentUser.roles : null;
+  userRoles = [];
+  constructor(private usersService : UsersService, private ngRedux: NgRedux<IAppState>){
+ 
+  }
+
   canActivate(route) {
-      console.log('AuthGuard#canActivate called');
-      if (route.data.roles.indexOf('*') !== -1) {
+    this.userRoles = JSON.parse(JSON.stringify(this.ngRedux.getState())).session.user.roles;
+    if (route.data.roles.indexOf('*') !== -1) {
         return true;
       } else {
         if (!this.userRoles) {

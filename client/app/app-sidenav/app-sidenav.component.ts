@@ -41,7 +41,6 @@ export class AppSidenavComponent implements OnInit {
   static isLoggedIn(s){ return s.session.token; }
   ngAfterViewInit() {
     var sidenav = this.sidenav.nativeElement;
-    console.log(sidenav); // or whatever
     if (this.getCookie("pin") == "true") {
       this.isToggled = true;
       this.sideNavLock = true;

@@ -22,7 +22,8 @@ export const SessionFactory = makeTypedFactory<ISession, ISessionRecord>({
   user: INITIAL_USER_STATE,
   hasError: false,
   isLoading: false,
-  hasMessage : null
+  hasMessage : null,
+  actionType : null
 });
 
 export const INITIAL_STATE = SessionFactory();
