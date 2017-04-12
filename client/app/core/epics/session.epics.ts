@@ -37,6 +37,7 @@ export class SessionEpics {
           }));
         });
   }
+
   editProfile = (action$: Observable<IPayloadAction>) => {
     return action$
       .filter<IPayloadAction>(({ type }) => type === SessionActions.PUT_USER)
@@ -90,8 +91,9 @@ export class SessionEpics {
        });
    }
 
+
     private getToken(){
-      return JSON.parse(localStorage.getItem('token')).token;
+      return JSON.parse(localStorage.getItem('token'))?JSON.parse(localStorage.getItem('token')).token:null;
     }
     private jwt(token) {
         // create authorization header with jwt token

@@ -30,7 +30,7 @@ export class AppComponent {
     this.epics.login,
     this.epics.editProfile,
     this.epics.getProfile,
-    this.epics.changePassword
+    this.epics.changePassword,
   );
   constructor(
     private devTools: DevToolsExtension,

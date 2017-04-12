@@ -20,8 +20,9 @@ export interface ISession {
   user: IUser;
   hasError: boolean;
   isLoading: boolean;
-  hasMessage : IMessage
-};
+  hasMessage : IMessage,
+  actionType : string,
+  };
 
 export interface ISessionRecord extends TypedRecord<ISessionRecord>,
   ISession {

@@ -12,7 +12,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ProfileComponent } from './settings/profile/profile.component';
 import { PasswordComponent } from './settings/password/password.component';
 import { EqualValidator } from './settings/password/equal-validator.directive';
-
+import { ListComponent } from './list/list.component';
+export function usersFactory(config: UsersConfig) {
+  return () => config.addMenu() ;
+}
 @NgModule({
   imports: [
     USERS_ROUTES,
@@ -28,10 +31,12 @@ import { EqualValidator } from './settings/password/equal-validator.directive';
     SettingsComponent,
     ProfileComponent,
     PasswordComponent,
-    EqualValidator
+    EqualValidator,
+    ListComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: [ UsersConfig, OverlayContainer],
-
+  providers: [ UsersConfig, OverlayContainer,
+  { provide: APP_INITIALIZER, useFactory: usersFactory, deps: [UsersConfig], multi: true }
+],
 })
 export class UsersModule {}

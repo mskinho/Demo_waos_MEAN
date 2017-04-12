@@ -20,14 +20,16 @@ export const sessionReducer = (
       });
 
     case SessionActions.LOGIN_USER_SUCCESS:
-      console.log('state:', action.payload.user);
+      console.log('thtstate:', action.payload.user);
       localStorage.setItem('currentUser', JSON.stringify(UserFactory(action.payload.user)));
+      localStorage.setItem('token', JSON.stringify(action.payload.token));
       return state.merge({
         token: action.payload.token,
         user: UserFactory(action.payload.user),
         hasError: false,
         isLoading: false,
-        hasMessage :null
+        hasMessage :null,
+        actionType : action.type
       });
 
     case SessionActions.LOGIN_USER_ERROR:
@@ -36,12 +38,21 @@ export const sessionReducer = (
         user: INITIAL_USER_STATE,
         hasError: true,
         isLoading: false,
-        hasMessage :null
+        hasMessage :null,
+        actionType : action.type
       });
 
     case SessionActions.LOGOUT_USER:
       localStorage.removeItem('currentUser');
-      return INITIAL_STATE;
+      localStorage.removeItem('token');
+      return state.merge({
+        token: null,
+        user: INITIAL_USER_STATE,
+        hasError: false,
+        isLoading: false,
+        hasMessage : null,
+        actionType : null
+      });
 
     case actionTypes.INIT:
       const persistedState = action.payload;
@@ -56,9 +67,7 @@ export const sessionReducer = (
       case SessionActions.PUT_USER :
        {
         return state.merge({
-          token : JSON.parse(localStorage.getItem('token')).token,
-          user: UserFactory(JSON.parse(localStorage.getItem('currentUser'))),
-          hasMessage: action.payload,
+          hasMessage: null,
           hasError: false,
           isLoading: true
         });
@@ -66,11 +75,11 @@ export const sessionReducer = (
         case SessionActions.PUT_USER_SUCCESS:
           localStorage.setItem('currentUser',JSON.stringify(UserFactory(action.payload.user)))
           return state.merge({
-            token : JSON.parse(localStorage.getItem('token')).token,
             user: UserFactory(action.payload.user),
             hasMessage : action.payload.hasMessage,
             hasError: false,
-            isLoading: false
+            isLoading: false,
+            actionType : action.type
           });
 
         case SessionActions.PUT_USER_ERROR:
@@ -79,8 +88,22 @@ export const sessionReducer = (
             user: INITIAL_USER_STATE,
             hasError: true,
             isLoading: false,
-            hasMessage:null
+            hasMessage:null,
+            actionType : action.type
+        });
 
+        case SessionActions.GET_USER:
+          return state.merge({
+            hasError: false,
+            isLoading: false,
+            hasMessage:null
+        });
+        case SessionActions.GET_USER_SUCCESS:
+          return state.merge({
+            user: UserFactory(action.payload),
+            hasError: false,
+            isLoading: false,
+            hasMessage:null
         });
         case SessionActions.GET_USER_ERROR:
           return state.merge({
@@ -88,50 +111,29 @@ export const sessionReducer = (
             user: INITIAL_USER_STATE,
             hasError: true,
             isLoading: false,
-            hasMessage:null
-
-        });
-        case SessionActions.GET_USER:
-          return state.merge({
-            token : JSON.parse(localStorage.getItem('token')).token,
-            user: UserFactory(JSON.parse(localStorage.getItem('currentUser'))),
-            hasError: false,
-            isLoading: false,
-            hasMessage:null
-        });
-        case SessionActions.GET_USER_SUCCESS:
-          return state.merge({
-            token : JSON.parse(localStorage.getItem('token')).token,
-            user: UserFactory(action.payload),
-            hasError: false,
-            isLoading: false,
-            hasMessage:null
+            hasMessage:null,
         });
 
         case SessionActions.CHANGE_PASSWORD:
           return state.merge({
-            token : JSON.parse(localStorage.getItem('token')).token,
-            user: UserFactory(JSON.parse(localStorage.getItem('currentUser'))),
             hasError: false,
             isLoading: false,
-            hasMessage:null
+            hasMessage:null,
+            actionType : action.type
         });
         case SessionActions.CHANGE_PASSWORD_SUCCESS:
-        console.log(action.payload);
           return state.merge({
-            token : JSON.parse(localStorage.getItem('token')).token,
-            user:  UserFactory(JSON.parse(localStorage.getItem('currentUser'))),
             hasMessage : action.payload,
             hasError: false,
-            isLoading: false
+            isLoading: false,
+            actionType : action.type
           });
           case SessionActions.CHANGE_PASSWORD_ERROR:
             return state.merge({
-              token : JSON.parse(localStorage.getItem('token')).token,
-              user:  UserFactory(JSON.parse(localStorage.getItem('currentUser'))),
               hasMessage : action.payload,
               hasError: false,
-              isLoading: false
+              isLoading: false,
+              actionType : action.type
             });
     default:
       return state;

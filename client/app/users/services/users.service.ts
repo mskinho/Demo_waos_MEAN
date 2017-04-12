@@ -28,19 +28,25 @@ export class UsersService {
       return JSON.parse(localStorage.getItem('currentUser'));
     }
     getToken(){
-      return JSON.parse(localStorage.getItem('token'));
+      return JSON.parse(localStorage.getItem('token'))?JSON.parse(localStorage.getItem('token')).token :null;
     }
 
     getProfile (): Observable<any> {
-      let token =this.getToken().token;
+      let token =this.getToken();
       let backendURL = `${this._baseUrl}${environment.backend.endpoints.users}/me` ;
       return this.http.get(backendURL, this.jwt(token)).map((response: Response) => response.json());
     }
     editProfile(user):Observable<any>{
-      let token =this.getToken().token;
+      let token =this.getToken();
       let backendURL = `${this._baseUrl}${environment.backend.endpoints.users}` ;
       console.log('backendURL',backendURL)
       return this.http.put(backendURL,this.jwt(token), user).map((response: Response) => response.json());
+    }
+    getUsers():Observable<any>{
+      let token =this.getToken();
+      console.log(token)
+      let backendURL = `${this._baseUrl}${environment.backend.endpoints.users}` ;
+      return this.http.get(backendURL, this.jwt(token)).map((response: Response) => response.json());
     }
     // private helper methods
     jwt(token) {

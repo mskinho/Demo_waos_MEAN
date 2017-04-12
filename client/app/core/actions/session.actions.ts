@@ -18,6 +18,10 @@ export class SessionActions {
   static CHANGE_PASSWORD = 'CHANGE_PASSWORD';
   static CHANGE_PASSWORD_SUCCESS ='CHANGE_PASSWORD_SUCCESS';
   static CHANGE_PASSWORD_ERROR = 'CHANGE_PASSWORD_ERROR';
+  static GET_USERS ='GET_USERS';
+  static GET_USERS_SUCCESS ='GET_USERS_SUCCESS';
+  static GET_USERS_ERROR ='GET_USERS_ERROR'
+
   constructor(private ngRedux: NgRedux<IAppState>) { }
 
   loginUser(credentials) {

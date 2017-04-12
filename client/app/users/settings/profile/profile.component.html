@@ -18,10 +18,10 @@
       <div class="center-align">
       <button (click)="saveProfile(user)" md-raised-button color="primary" type="button">Save Profile</button>
     </div>
-    <div *ngIf="state?.session.hasMessage?.get('type')==='success'" class="center-align text-success">
+    <div *ngIf="state?.session.hasMessage?.get('type')==='success' && state?.session.actionType==='PUT_USER_SUCCESS'" class="center-align text-success">
       <strong>{{state?.session.hasMessage?.get('message')}}</strong>
     </div>
-    <div type="danger" *ngIf="state?.session.hasMessage?.get('type')==='echec'" class="center-align text-danger">
+    <div type="danger" *ngIf="state?.session.hasMessage?.get('type')==='echec' && state?.session.actionType==='PUT_USER_ERROR'" class="center-align text-danger">
       <span>{{state?.session.hasMessage?.get('message')}}</span>
     </div>
 </form>
