@@ -1,32 +1,32 @@
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER }       from '@angular/core';
-import { UsersConfig } from './index';
-import { LoginComponent } from './login/index';
-import {RegisterComponent } from './register/index';
-import {SettingsComponent} from './settings/index';
-// MATERIAL DESIGN MODULES
-import { MaterialModule, OverlayContainer } from '@angular/material';
-import { USERS_ROUTES } from './index';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, APP_INITIALIZER } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import { ProfileComponent } from './settings/profile/profile.component';
-import { PasswordComponent } from './settings/password/password.component';
-import { EqualValidator } from './settings/password/equal-validator.directive';
-import { ListComponent } from './list/list.component';
+// MATERIAL DESIGN MODULES
+import { MaterialModule } from '@angular/material';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+// LOGIN COMPONENTS
+import { LoginComponent, RegisterComponent, SettingsComponent, ProfileComponent,
+   PasswordComponent,ListComponent, EqualValidator} from './index';
+
+// LOGIN ROUTES
+import { USERS_ROUTES } from './index';
+
+// LOGIN SERVICES 
+import { UsersConfig, UsersService, Auth, AuthInterceptor } from './index';
+
+
 export function usersFactory(config: UsersConfig) {
   return () => config.addMenu() ;
 }
+
 @NgModule({
   imports: [
     USERS_ROUTES,
     MaterialModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    CommonModule,
-    BrowserAnimationsModule,
-    BrowserModule
+    CommonModule
   ],
   declarations: [
     LoginComponent,
@@ -38,8 +38,16 @@ export function usersFactory(config: UsersConfig) {
     ListComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: [ UsersConfig, OverlayContainer,
+  providers: [ UsersConfig, UsersService,
   { provide: APP_INITIALIZER, useFactory: usersFactory, deps: [UsersConfig], multi: true }
 ],
 })
-export class UsersModule {}
+export class UsersModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: UsersModule,
+      providers: [Auth, AuthInterceptor]
+    }
+  }
+
+}

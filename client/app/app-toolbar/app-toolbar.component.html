@@ -14,7 +14,7 @@
       </ul>
       <ul class="right" *ngIf="isNormalScreen||isOpenToolBox">
         <li mdTooltip="Sign out">
-          <a *ngIf="loggedOut$ | async" [routerLink]="['login']" class="login">
+          <a *ngIf="loggedOut$ | async" [routerLink]="['user/login']" class="login">
             <fa name="sign-in" #login size="1x"></fa>
           </a>
         </li>

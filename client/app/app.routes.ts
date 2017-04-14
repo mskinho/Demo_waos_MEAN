@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const ROUTES: Routes = [
      // otherwise redirect to home
+     { path: 'user', loadChildren:'./users/users.module#UsersModule'},
      { path: '**', redirectTo: '' }
 ];
 

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -12,7 +12,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import 'hammerjs';
 
-
 //  REDUX
 import { NgReduxModule, DevToolsExtension } from '@angular-redux/store';
 import { NgReduxRouterModule } from '@angular-redux/router';
@@ -21,19 +20,18 @@ import { NgReduxRouterModule } from '@angular-redux/router';
 import { APP_ROUTES } from './app.routes';
 
 //  SERVICES
-import { UsersService, AuthInterceptor } from './users/index';
 import {SessionActions} from './core/actions/session.actions';
 import {SessionEpics} from './core/epics';
 import {MenuService} from './core/services/menu.client.service';
-import { Auth } from './users/services/auth.service'
 
 //  COMPONENTS
-import { AppComponent } from './app.component';
-import { AppToolbarComponent } from './app-toolbar/index';
-import { AppSidenavComponent } from './app-sidenav/index';
+import { AppComponent, 
+  AppSidenavComponent, 
+  AppToolbarComponent } from "./index";
+
 import { HomeModule } from './home/index';
 import { ArticlesModule } from './articles/index';
-import {UsersModule} from './users/index';
+import { UsersModule } from "./users";
 
 @NgModule({
   declarations: [
@@ -42,28 +40,25 @@ import {UsersModule} from './users/index';
     AppSidenavComponent
   ],
   imports: [
-    CommonModule,
     ReactiveFormsModule,
     FormsModule,
     HttpModule,
     NgReduxModule,
     NgReduxRouterModule,
     APP_ROUTES,
+    UsersModule.forRoot(),
     HomeModule,
     ArticlesModule,
     Angular2FontAwesomeModule,
     MaterialModule.forRoot(),
-    BrowserAnimationsModule,
-    UsersModule
+    BrowserAnimationsModule, 
+    BrowserModule
   ],
   providers: [
     OverlayContainer,
-    AuthInterceptor,
     SessionActions,
     SessionEpics,
-    MenuService,
-    UsersService,
-    Auth
+    MenuService
   ],
   bootstrap: [AppComponent]
 })

@@ -6,9 +6,8 @@ import { IAppState } from '../../core/store';
 @Injectable()
 export class Auth implements CanActivate{
   userRoles = [];
-  constructor(private usersService : UsersService, private ngRedux: NgRedux<IAppState>){
- 
-  }
+  constructor(private usersService : UsersService, 
+                private ngRedux: NgRedux<IAppState>){}
 
   canActivate(route) {
     this.userRoles = JSON.parse(JSON.stringify(this.ngRedux.getState())).session.user.roles;

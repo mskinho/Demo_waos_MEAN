@@ -1,10 +1,13 @@
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER }       from '@angular/core';
-import { HomeComponent }    from './index';
-import { HomeConfig } from './index';
+import { CommonModule } from '@angular/common';
 
 // MATERIAL DESIGN MODULES
 import { MaterialModule, OverlayContainer } from '@angular/material';
 import { HOME_ROUTES } from './index';
+
+// HOME COMPONENT
+import { HomeComponent }    from './index';
+import { HomeConfig } from './index';
 
 export function homeFactory(config: HomeConfig) {
   return () => config.addMenu() ;
@@ -13,7 +16,8 @@ export function homeFactory(config: HomeConfig) {
 @NgModule({
   imports: [
     HOME_ROUTES,
-    MaterialModule.forRoot()
+    MaterialModule.forRoot(),
+    CommonModule
   ],
   declarations: [
     HomeComponent
