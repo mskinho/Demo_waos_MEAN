@@ -8,6 +8,8 @@ import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-a
 
 // MATERIAL DESIGN MODULES
 import { MaterialModule, OverlayContainer } from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 import 'hammerjs';
 
 
@@ -51,6 +53,7 @@ import {UsersModule} from './users/index';
     ArticlesModule,
     Angular2FontAwesomeModule,
     MaterialModule.forRoot(),
+    BrowserAnimationsModule,
     UsersModule
   ],
   providers: [

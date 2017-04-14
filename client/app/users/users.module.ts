@@ -9,6 +9,8 @@ import { USERS_ROUTES } from './index';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 import { ProfileComponent } from './settings/profile/profile.component';
 import { PasswordComponent } from './settings/password/password.component';
 import { EqualValidator } from './settings/password/equal-validator.directive';
@@ -23,6 +25,7 @@ export function usersFactory(config: UsersConfig) {
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
+    BrowserAnimationsModule,
     BrowserModule
   ],
   declarations: [
