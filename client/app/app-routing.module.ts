@@ -7,8 +7,8 @@ import { HomeComponent } from "./home";
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'user', loadChildren:'./users/users.module#UsersModule' },
-  { path: 'articles', loadChildren:'./articles/articles.module#ArticlesModule' },
+  { path: 'user', loadChildren:'app/users/users.module#UsersModule' },
+  { path: 'articles', loadChildren:'app/articles/articles.module#ArticlesModule' },
 
   // otherwise redirect to home
   { path: '**', redirectTo: 'home' }
@@ -16,7 +16,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes, {useHash: true})
   ],
   exports: [
     RouterModule
