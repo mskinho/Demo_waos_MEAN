@@ -1,38 +1,38 @@
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER } from '@angular/core';
-import {TooltipPosition} from '@angular/material';
-import { ArticlesComponent }    from './articles.component';
-import { ArticlesConfig } from './index';
-import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-awesome';
-import { platformBrowser } from '@angular/platform-browser';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER, ModuleWithProviders } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 // MATERIAL DESIGN MODULES
-import { MaterialModule, OverlayContainer } from '@angular/material';
-import { ARTICLES_ROUTES } from './index';
-import { ArticleComponent } from './article/article.component';
-import {ArticlesService} from './services/articles.service';
-import { DetailsComponent } from './article/details/details.component';
-export function articlesFactory(config: ArticlesConfig) {
-  return () => config.addMenu() ;
-}
+import { MaterialModule, OverlayContainer, TooltipPosition } from '@angular/material';
+import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-awesome';
+
+// ARTICLES COMPONENTS
+import { ArticlesComponent, ArticlesListComponent, ArticleDetailsComponent } from './index';
+
+// ARTICLES SERVICES
+import {ArticlesService} from './index';
+
+// ARTICLE CONFIG
+// import { ArticlesConfig, articlesFactory } from './index';
+
+// ARTICLES ROUTES
+// import { ARTICLES_ROUTES } from './index';
+import { ArticlesRoutingModule } from "./articles-routing.module";
 
 @NgModule({
   imports: [
-    ARTICLES_ROUTES,
-    BrowserModule,
-    MaterialModule
-
+    // ARTICLES_ROUTES,
+    CommonModule,
+    MaterialModule,
+    ArticlesRoutingModule
   ],
   declarations: [
     ArticlesComponent,
-    ArticleComponent,
-    DetailsComponent
+    ArticlesListComponent,
+    ArticleDetailsComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: [ ArticlesConfig, OverlayContainer,ArticlesService,
-  { provide: APP_INITIALIZER, useFactory: articlesFactory, deps: [ArticlesConfig], multi: true }
-],
+  providers: [OverlayContainer,ArticlesService],
 
 })
-export class ArticlesModule {}
+export class ArticlesModule {
+}

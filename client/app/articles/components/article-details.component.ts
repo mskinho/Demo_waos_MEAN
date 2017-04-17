@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {ArticlesService} from '../../services/articles.service';
+import {ArticlesService} from '../services/articles.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-details',
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css']
+  templateUrl: './article-details.component.html',
+  styleUrls: ['./article-details.component.css']
 })
-export class DetailsComponent implements OnInit {
-  article ={};
+
+export class ArticleDetailsComponent implements OnInit {
+  article: any = {};
   private sub: any;
   id: any;
 

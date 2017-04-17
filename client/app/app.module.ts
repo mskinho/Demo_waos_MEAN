@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 // FONT AWESOME
 import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-awesome';
 
@@ -12,54 +12,44 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import 'hammerjs';
 
-//  REDUX
-import { NgReduxModule, DevToolsExtension } from '@angular-redux/store';
-import { NgReduxRouterModule } from '@angular-redux/router';
+// APP ROUTING 
+import { AppRoutingModule } from './app-routing.module';
 
-//  ROUTING APP
-import { APP_ROUTES } from './app.routes';
+// APP COMPONENTS
+import { AppComponent } from "./index";
 
-//  SERVICES
-import {SessionActions} from './core/actions/session.actions';
-import {SessionEpics} from './core/epics';
-import {MenuService} from './core/services/menu.client.service';
-
-//  COMPONENTS
-import { AppComponent, 
-  AppSidenavComponent, 
-  AppToolbarComponent } from "./index";
-
+import { CoreModule } from "./core";
 import { HomeModule } from './home/index';
-import { ArticlesModule } from './articles/index';
+import { ArticlesConfigModule } from './articles/config';
 import { UsersModule } from "./users";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AppToolbarComponent,
-    AppSidenavComponent
+    AppComponent
   ],
   imports: [
     ReactiveFormsModule,
     FormsModule,
     HttpModule,
-    NgReduxModule,
-    NgReduxRouterModule,
-    APP_ROUTES,
-    UsersModule.forRoot(),
-    HomeModule,
-    ArticlesModule,
     Angular2FontAwesomeModule,
     MaterialModule.forRoot(),
     BrowserAnimationsModule, 
+    CoreModule,
+    UsersModule.forRoot(),
+    ArticlesConfigModule.forRoot(),
+    AppRoutingModule,
+    HomeModule,
     BrowserModule
   ],
   providers: [
-    OverlayContainer,
-    SessionActions,
-    SessionEpics,
-    MenuService
+    OverlayContainer
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  // Diagnostic only: inspect router configuration
+  constructor(router: Router) {
+    console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
+  }
+
+}

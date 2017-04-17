@@ -1,24 +1,49 @@
 import { RouterModule, Routes } from '@angular/router';
-// APP COMPONENTS
+
+// ARTICLES COMPONENTS
 import { ArticlesComponent } from './index';
 import { ArticleComponent } from './article/index';
-import { Auth } from '../users/services/auth.service';
 import {DetailsComponent} from './article/details/details.component';
+
+import { Auth } from '../users/services/auth.service';
+
+// const ARTICLESROUTES: Routes = [{
+//         path: '', 
+//         component: ArticlesComponent,
+//         canActivateChild: [Auth],
+//         pathMatch: 'prefix',
+//         data : {
+//           roles : ['user', 'admin']
+//         }
+//       }
+//       ,{
+//         path: 'article/:id',
+//         component: DetailsComponent,
+//         canActivateChild: [Auth],
+//         data : {
+//           roles : ['user', 'admin']
+//         }
+//       }
+//     ];
+
+
 const ARTICLESROUTES: Routes = [{
-        path: 'list-articles',
+        path: '', 
         component: ArticlesComponent,
         canActivate: [Auth],
         data : {
           roles : ['user', 'admin']
-        }
-      },{
-        path: 'list-articles/article/:id',
-        component: DetailsComponent,
-        canActivate: [Auth],
-        data : {
-          roles : ['user', 'admin']
-        }
+        }, 
+        children: [{
+          path: 'article/:id',
+          component: DetailsComponent,
+          canActivateChild: [Auth],
+          data : {
+            roles : ['user', 'admin']
+          }
+        }]
       }
     ];
 
-export const ARTICLES_ROUTES = RouterModule.forRoot(ARTICLESROUTES,{useHash: true});
+
+export const ARTICLES_ROUTES = RouterModule.forChild(ARTICLESROUTES);

@@ -6,4 +6,4 @@ import { RouterModule, Routes } from '@angular/router';
 const HOMEROUTES: Routes = [
      { path: 'home', component: HomeComponent}];
 
-export const HOME_ROUTES = RouterModule.forRoot(HOMEROUTES,{useHash: true});
+export const HOME_ROUTES = RouterModule.forChild(HOMEROUTES);
