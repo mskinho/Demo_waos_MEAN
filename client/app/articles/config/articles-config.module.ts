@@ -7,7 +7,7 @@ export class ArticlesConfig {
   }
   addMenu(){
     this.menuService.addMenuItem('sideNav',{
-      state: '#/articles',
+      state: 'articles',
       title: 'Articles',
       icon: 'fa-file',
       roles: ['user', 'admin'],

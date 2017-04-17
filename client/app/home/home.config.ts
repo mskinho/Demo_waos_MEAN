@@ -8,7 +8,7 @@ export class HomeConfig {
   }
   addMenu(){
     this.menuService.addMenuItem('sideNav',{
-      state: '#/home',
+      state: 'home',
       title: 'Home',
       icon: 'fa-home',
       roles: ['*']
