@@ -1,31 +1,8 @@
 import { RouterModule, Routes } from '@angular/router';
 
 // ARTICLES COMPONENTS
-import { ArticlesComponent } from './index';
-import { ArticleComponent } from './article/index';
-import {DetailsComponent} from './article/details/details.component';
-
+import { ArticlesComponent, ArticleDetailsComponent, ArticleComponent } from './components/index';
 import { Auth } from '../users/services/auth.service';
-
-// const ARTICLESROUTES: Routes = [{
-//         path: '', 
-//         component: ArticlesComponent,
-//         canActivateChild: [Auth],
-//         pathMatch: 'prefix',
-//         data : {
-//           roles : ['user', 'admin']
-//         }
-//       }
-//       ,{
-//         path: 'article/:id',
-//         component: DetailsComponent,
-//         canActivateChild: [Auth],
-//         data : {
-//           roles : ['user', 'admin']
-//         }
-//       }
-//     ];
-
 
 const ARTICLESROUTES: Routes = [{
         path: '', 
@@ -36,7 +13,7 @@ const ARTICLESROUTES: Routes = [{
         }, 
         children: [{
           path: 'article/:id',
-          component: DetailsComponent,
+          component: ArticleDetailsComponent,
           canActivateChild: [Auth],
           data : {
             roles : ['user', 'admin']

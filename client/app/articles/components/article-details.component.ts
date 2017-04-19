@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {ArticlesService} from '../services/articles.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -16,12 +16,14 @@ export class ArticleDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
+      if(params['id']){
       this.articlesService.getArticle(params['id']).subscribe(
             data => {
               console.log(data);
             this.article = data;
       });
-    });
+    }
+   });
 
   }
 
