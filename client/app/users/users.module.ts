@@ -44,7 +44,7 @@ export function httpFactory(xhrBackend: XHRBackend, requestOptions: RequestOptio
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [ UsersConfig, UsersService,
   { provide: APP_INITIALIZER, useFactory: usersFactory, deps: [UsersConfig], multi: true },
-  // { provide: Http,  useFactory: httpFactory, deps: [XHRBackend, RequestOptions]}
+  { provide: Http,  useFactory: httpFactory, deps: [XHRBackend, RequestOptions]}
 
 ],
 })
