@@ -10,7 +10,7 @@
     "prod": "ng build --prod && npm run gulp",
     "gulp": "gulp --gulpfile server/gulpfile.js",
     "lint": "tslint \"client/**/*.ts\" --project client/tsconfig.json --type-check && tslint \"e2e/**/*.ts\" --project e2e/tsconfig.json --type-check",
-    "test": "ng test",
+    "test": "snyk test && ng test",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
     "e2e": "protractor"
   },
@@ -138,7 +138,8 @@
     "run-sequence": "~1.2.2",
     "semver": "~5.3.0",
     "should": "~11.1.0",
-    "supertest": "^2.0.1"
+    "supertest": "^2.0.1",
+    "snyk": "^1.29.0"
   },
   "ava": {
     "require": [
