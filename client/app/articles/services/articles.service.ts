@@ -22,5 +22,4 @@ export class ArticlesService {
         let backendURL = `${this._baseUrl}${environment.backend.endpoints.articles}/${id_article}` ;
         return this.http.get(backendURL).map((response: Response) => response.json());
     }
-
-}
+ }

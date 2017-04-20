@@ -3,13 +3,14 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Router } from '@angular/router';
+import {InterceptedHttp} from "./users/services/interceptors/http.interceptor";
+
 // FONT AWESOME
 import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-awesome';
 
 // MATERIAL DESIGN MODULES
 import { MaterialModule, OverlayContainer } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
 import 'hammerjs';
 
 // APP ROUTING 
@@ -22,7 +23,6 @@ import { CoreModule } from "./core";
 import { HomeModule } from './home/index';
 import { ArticlesConfigModule } from './articles/config';
 import { UsersModule } from "./users";
-
 @NgModule({
   declarations: [
     AppComponent
@@ -42,8 +42,7 @@ import { UsersModule } from "./users";
     BrowserModule
   ],
   providers: [
-    OverlayContainer
-  ],
+    OverlayContainer],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
