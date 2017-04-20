@@ -1,13 +1,11 @@
 language: node_js
 sudo: false
 node_js:
-  - 4
-  - 5
   - 6
   - 7
 matrix:
   allow_failures:
-    - node_js: 7
+    - node_js: 6
 os:
   - linux
   - centos
@@ -40,8 +38,8 @@ before_install:
   - 'node_modules/protractor/bin/webdriver-manager start 2>&1 &'
   - sleep 3
 before_script:
-  - snyk auth $SNYK_TOKEN
-  - snyk test
+  # - snyk auth $SNYK_TOKEN
+  # - snyk test
 script:
   - ng build --prod
   - npm run prod
