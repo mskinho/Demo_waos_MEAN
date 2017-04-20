@@ -1,14 +1,13 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { select } from '@angular-redux/store';
-import { SessionActions } from '../core/actions';
 import { Router, ActivatedRoute } from '@angular/router';
 import {TooltipPosition} from '@angular/material';
-import { ToggleNavService } from '../toggle-nav.service';
+import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import { NgRedux } from '@angular-redux/store';
-import { IAppState } from '../core/store';
-import { MenuService } from '../core/services/menu.client.service';
+import { NgRedux, select } from '@angular-redux/store';
+
+import { ToggleNavService, MenuService } from '../../services';
+import { IAppState } from '../../store';
+import { SessionActions } from '../../actions';
 
 
 @Component({

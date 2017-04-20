@@ -1,7 +1,7 @@
 <div #sidenav class="sidenav " [class.toggled]="isToggled">
   <div class="sidebar-nav">
     <div class="head">
-      <a href="home">
+      <a routerLink="">
         <img src="assets/logo-mean.ico" width="40px" class="logo">
         <span style="font-size:28px; color:#fff;">Mean 2</span>
         <a class="right pin-icon" (click)="changePinStatus()" [hidden]="!(isNormalScreen&&sideNavLock)"><i class=" fa fa-lock fa-fw"></i></a>
@@ -13,7 +13,7 @@
       <ul>
         <li *ngFor="let item of menuList">
           <div *ngIf="item.shouldRender(state.session.user.roles,item.roles)">
-            <a *ngIf="item.roles.indexOf('*')!==-1 || (loggedIn$ | async)" href="{{item.state}}"><i class="fa {{item.icon}} fa-fw"></i><span [innerHtml]="item.title"></span></a>
+            <a *ngIf="item.roles.indexOf('*')!==-1 || (loggedIn$ | async)" routerLink="{{item.state}}"><i class="fa {{item.icon}} fa-fw"></i><span [innerHtml]="item.title"></span></a>
           </div>
         </li>
       </ul>
@@ -22,7 +22,7 @@
 
     <div class="user">
       <div *ngIf="loggedIn$ | async">
-        <a [routerLink]="['/settings/profile']">
+        <a [routerLink]="['/user/settings/profile']">
           <md-icon>person</md-icon>
           <span>{{state.session.user.firstName}} {{state.session.user.lastName}}</span>
         </a>

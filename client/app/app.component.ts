@@ -10,9 +10,9 @@ import {
   rootReducer,
   middleware,
   enhancers
-} from './core/store';
-import {SessionEpics} from './core/epics';
-import { ToggleNavService } from './toggle-nav.service';
+} from './core';
+import {SessionEpics} from './core';
+import { ToggleNavService } from './core';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({

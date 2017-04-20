@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { select } from '@angular-redux/store';
-import { ToggleNavService } from '../toggle-nav.service';
 import { Subscription } from 'rxjs/Subscription';
 import { NgRedux } from '@angular-redux/store';
-import { IAppState } from '../core/store';
-import { MenuService } from '../core/services/menu.client.service';
+
+import { ToggleNavService, MenuService } from '../../services';
+import { IAppState } from '../../store';
 
 
 @Component({
