@@ -41,9 +41,7 @@ before_script:
   # - snyk auth $SNYK_TOKEN
   # - snyk test
 script:
-  - ng build --prod
   - npm run prod
-  
 after_script:
   - nsp check
   - gulp test:coverage
