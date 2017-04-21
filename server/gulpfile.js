@@ -32,7 +32,7 @@ gulp.task('env:prod', function () {
 });
 
 // Nodemon task
-gulp.task('nodemon', function () {
+gulp.task('nodemon-debug', function () {
   return plugins.nodemon({
     script: 'server.js',
     nodeArgs: ['--harmony'],
@@ -43,7 +43,7 @@ gulp.task('nodemon', function () {
 });
 
 // Nodemon task without verbosity or debugging
-gulp.task('nodemon-debug', function () {
+gulp.task('nodemon-nodebug', function () {
   return plugins.nodemon({
     script: 'server.js',
     nodeArgs: ['--harmony', '--debug', '--inspect'],
@@ -267,7 +267,7 @@ gulp.task('test:coverage', function (done) {
 
 // Run the project in development mode
 gulp.task('default', function (done) {
-  runSequence('env:dev', ['copyLocalEnvConfig', 'makeUploadsDir'], ['nodemon', 'watch'], done);
+  runSequence('env:dev', ['copyLocalEnvConfig', 'makeUploadsDir'], ['nodemon-debug', 'watch'], done);
 });
 
 // Run the project in debug mode
