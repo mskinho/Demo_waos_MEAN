@@ -12,17 +12,17 @@ module.exports = {
     // Enable mongoose debug mode
     debug: process.env.MONGODB_DEBUG || false
   },
-  orm: {
-    dbname: 'meandev',
-    user: '',
-    pass: '',
-    options: {
-      // sequelize supports one of: mysql, postgres, sqlite, mariadb and mssql.
-      dialect: 'postgres',
-      host: '127.0.0.1',
-      port: '5432'
-    }
-  },
+  // orm: {
+  //   dbname: 'meandev',
+  //   user: '',
+  //   pass: '',
+  //   options: {
+  //     // sequelize supports one of: mysql, postgres, sqlite, mariadb and mssql.
+  //     dialect: 'postgres',
+  //     host: '127.0.0.1',
+  //     port: '5432'
+  //   }
+  // },
   log: {
     // logging with Morgan - https://github.com/expressjs/morgan
     // Can specify one of 'combined', 'common', 'dev', 'short', 'tiny'

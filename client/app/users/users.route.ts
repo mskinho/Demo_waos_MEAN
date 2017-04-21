@@ -6,17 +6,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 const USERSROUTES: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent, canActivate: [Auth],
+  { path: 'register', component: RegisterComponent , canActivateChild: [Auth]},
+  { path: 'settings/profile', component: SettingsComponent, canActivateChild: [Auth],
   data : {
     roles : ['user', 'admin']
   } },
-  { path: 'settings/profile', component: SettingsComponent,canActivate: [Auth],
-  data : {
-    roles : ['user', 'admin']
-  } },
-  { path:'list-users', component: ListComponent, canActivate: [Auth],
+  { path:'list-users', component: ListComponent, canActivateChild: [Auth],
   data : {
     roles : ['admin']
   }}];
 
-export const USERS_ROUTES = RouterModule.forRoot(USERSROUTES,{useHash: true});
+export const USERS_ROUTES = RouterModule.forChild(USERSROUTES);
