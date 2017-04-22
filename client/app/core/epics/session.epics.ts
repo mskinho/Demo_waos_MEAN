@@ -46,13 +46,15 @@ export class SessionEpics {
         return this.http.put(backendURL,payload)
           .map<Response, IPayloadAction>(result => ({
             type: SessionActions.PUT_USER_SUCCESS,
-            payload:{user : result.json(), hasMessage : {type : 'success',message: 'Profile Saved Successfully'}}
+            payload:{user : result.json()}
           }))
-          .catch<any, Action>(() => Observable.of({
-            type: SessionActions.PUT_USER_ERROR,
-            payload: {type : 'echec',message: 'Profile not Saved Successfully'}
-
-          }));
+          .catch<Response, IPayloadAction>(err => {
+            return Observable.of({
+              type: SessionActions.PUT_USER_ERROR,
+              payload: { hasMessage: err.json().message }
+            })
+          }
+          );
         });
     }
 
@@ -83,9 +85,9 @@ export class SessionEpics {
            type: SessionActions.CHANGE_PASSWORD_SUCCESS,
            payload: {type : 'success',message:result.json().message}
          }))
-         .catch<any, Action>((result) => Observable.of({
+         .catch<Response, IPayloadAction>(err => Observable.of({
            type: SessionActions.CHANGE_PASSWORD_ERROR,
-           payload: {type : 'echec',message: result.json().message}
+           payload: {hasMessage: err.json().message}
 
          }));
        });

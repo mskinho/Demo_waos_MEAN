@@ -79,11 +79,9 @@ export const sessionReducer = (
 
         case SessionActions.PUT_USER_ERROR:
           return state.merge({
-            token: null,
-            user: INITIAL_USER_STATE,
             hasError: true,
             isLoading: false,
-            hasMessage:null,
+            hasMessage: action.payload.hasMessage,
             actionType : action.type
         });
 
@@ -131,6 +129,6 @@ export const sessionReducer = (
               actionType : action.type
             });
     default:
-      return state;
+      return state.merge({hasMessage: null});
   }
 }
