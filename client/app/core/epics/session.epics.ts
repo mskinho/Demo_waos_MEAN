@@ -56,40 +56,39 @@ export class SessionEpics {
           }
           );
         });
-    }
+  }
 
-    getProfile = (action$: Observable<IPayloadAction>) => {
-      return action$
-        .filter<IPayloadAction>(({ type }) => type === SessionActions.GET_USER)
-        .mergeMap<IPayloadAction, IPayloadAction>(({ payload }) => {
-          let backendURL = `${this._baseUrl}${environment.backend.endpoints.users}/me` ;
-          return this.http.get(backendURL)
-            .map<Response, IPayloadAction>(result => ({
-              type: SessionActions.GET_USER_SUCCESS,
-              payload: result.json()
-            }))
-            .catch<any, Action>(() => Observable.of({
-              type: SessionActions.GET_USER_ERROR,
-              payload: {type : 'echec',message: 'An error occurred'}
+  getProfile = (action$: Observable<IPayloadAction>) => {
+    return action$
+      .filter<IPayloadAction>(({ type }) => type === SessionActions.GET_USER)
+      .mergeMap<IPayloadAction, IPayloadAction>(({ payload }) => {
+        let backendURL = `${this._baseUrl}${environment.backend.endpoints.users}/me` ;
+        return this.http.get(backendURL)
+          .map<Response, IPayloadAction>(result => ({
+            type: SessionActions.GET_USER_SUCCESS,
+            payload: result.json()
+          }))
+          .catch<any, Action>(() => Observable.of({
+            type: SessionActions.GET_USER_ERROR,
+            payload: {type : 'echec',message: 'An error occurred'}
+          }));
+        });
+  }
 
-            }));
-          });
-      }
- changePassword = (action$: Observable<IPayloadAction>) => {
-   return action$
-     .filter<IPayloadAction>(({ type }) => type === SessionActions.CHANGE_PASSWORD)
-     .mergeMap<IPayloadAction, IPayloadAction>(({ payload }) => {
-       let backendURL = `${this._baseUrl}${environment.backend.endpoints.users}/password` ;
-       return this.http.post(backendURL,payload)
-         .map<Response, IPayloadAction>(result => ({
-           type: SessionActions.CHANGE_PASSWORD_SUCCESS,
-           payload: {type : 'success',message:result.json().message}
-         }))
-         .catch<Response, IPayloadAction>(err => Observable.of({
-           type: SessionActions.CHANGE_PASSWORD_ERROR,
-           payload: {hasMessage: err.json().message}
-
-         }));
-       });
-   }
+  changePassword = (action$: Observable<IPayloadAction>) => {
+    return action$
+      .filter<IPayloadAction>(({ type }) => type === SessionActions.CHANGE_PASSWORD)
+      .mergeMap<IPayloadAction, IPayloadAction>(({ payload }) => {
+        let backendURL = `${this._baseUrl}${environment.backend.endpoints.users}/password` ;
+        return this.http.post(backendURL,payload)
+          .map<Response, IPayloadAction>(result => ({
+            type: SessionActions.CHANGE_PASSWORD_SUCCESS,
+            payload: {type : 'success',message:result.json().message}
+          }))
+          .catch<Response, IPayloadAction>(err => Observable.of({
+            type: SessionActions.CHANGE_PASSWORD_ERROR,
+            payload: {hasMessage: err.json().message}
+          }));
+      });
+  }
 }

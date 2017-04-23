@@ -116,19 +116,23 @@ export const sessionReducer = (
         });
         case SessionActions.CHANGE_PASSWORD_SUCCESS:
           return state.merge({
-            hasMessage : action.payload,
+            hasMessage : action.payload.hasMessage,
             hasError: false,
             isLoading: false,
             actionType : action.type
           });
           case SessionActions.CHANGE_PASSWORD_ERROR:
             return state.merge({
-              hasMessage : action.payload,
-              hasError: false,
+              hasMessage : action.payload.hasMessage,
+              hasError: true,
               isLoading: false,
               actionType : action.type
             });
     default:
-      return state.merge({hasMessage: null});
+      return state.merge({
+        hasMessage: null,
+        hasError: false,
+        isLoading: false,
+      });
   }
 }

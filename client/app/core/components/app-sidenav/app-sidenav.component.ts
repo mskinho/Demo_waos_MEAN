@@ -11,7 +11,6 @@ import { IUser } from "../../store/session";
   selector: 'app-app-sidenav',
   templateUrl: './app-sidenav.component.html',
   styleUrls: ['./app-sidenav.component.scss'],
-
 })
 export class AppSidenavComponent {
 

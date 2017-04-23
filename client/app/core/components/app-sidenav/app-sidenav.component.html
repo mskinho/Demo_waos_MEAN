@@ -20,8 +20,8 @@
     </div>
 
 
-    <div class="user">
-      <div *ngIf="loggedIn$ | async">
+    <div class="user" *ngIf="loggedIn$ | async">
+      <div >
         <a [routerLink]="['/user/settings/profile']">
           <md-icon>person</md-icon>
           <span>{{(user$ | async)?.firstName}} {{(user$ | async)?.lastName}}</span>

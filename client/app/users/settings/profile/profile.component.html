@@ -16,7 +16,7 @@
     </md-input-container>
   </div>
       <div class="center-align">
-      <button md-raised-button color="primary" type="submit" [disabled]="isLoading$ | async" (click)="saveProfile(form.value)"  [disabled]="!form.valid">Save Profile</button>
+      <button md-raised-button color="primary" type="submit" (click)="saveProfile(form.value)"  [disabled]="!form.valid || (isLoading$ | async)">Save Profile</button>
     </div>
     
 
