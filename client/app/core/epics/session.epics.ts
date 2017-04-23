@@ -32,9 +32,11 @@ export class SessionEpics {
             type: SessionActions.LOGIN_USER_SUCCESS,
             payload: result.json()
           }))
-          .catch<any, Action>(() => Observable.of({
-            type: SessionActions.LOGIN_USER_ERROR
-          }));
+          .catch<Response, IPayloadAction>(err => Observable.of({
+              type: SessionActions.LOGIN_USER_ERROR,
+              payload: { hasMessage: err.json().message }
+            })
+          );
         });
   }
 

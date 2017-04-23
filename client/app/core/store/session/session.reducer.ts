@@ -36,7 +36,7 @@ export const sessionReducer = (
         user: INITIAL_USER_STATE,
         hasError: true,
         isLoading: false,
-        hasMessage :null,
+        hasMessage : action.payload.hasMessage,
         actionType : action.type
       });
 
