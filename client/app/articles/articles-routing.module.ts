@@ -11,15 +11,18 @@ const articlesRoutes: Routes = [{
         component: ArticlesComponent,
         canActivate: [Auth],
         data : {
-          roles : ['user', 'admin']
+          roles : ['user', 'admin'], 
+          title : 'Articles'
         }, 
         children: [{
             path: '',
-            component: ArticlesListComponent
+            component: ArticlesListComponent,
+            data : { title : 'Articles List'}
           },
           {
           path: 'article/:id',
-          component: ArticleDetailsComponent
+          component: ArticleDetailsComponent,
+          data : { title : 'Article Detail'}
         }]
       }
     ];

@@ -1,6 +1,9 @@
 <div class="extend-toolbar header">
   <div class="top" md-colors="{background: 'background-TOPNAV', color: 'primary-50'}">
     <div class="nav-wrapper">
+      <ul class="left">
+        <b>{{title}}</b>
+      </ul>
       <ul class="right">
         <li *ngIf="!(loggedIn$ | async)" mdTooltip="Sign in">
           <a [routerLink]="['user/login']" class="login">

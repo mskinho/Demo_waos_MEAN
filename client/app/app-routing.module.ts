@@ -6,7 +6,7 @@ import { Auth } from './users';
 import { HomeComponent } from "./home";
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, data: { title: 'Home'} },
   { path: 'user', loadChildren:'app/users/users.module#UsersModule' },
   { path: 'articles', loadChildren:'app/articles/articles.module#ArticlesModule' },
 

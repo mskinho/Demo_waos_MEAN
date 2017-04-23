@@ -1,8 +1,11 @@
-import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import {TooltipPosition} from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { select } from '@angular-redux/store';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
 
 import { SessionActions } from '../../actions';
 import { IUser } from "../../store/session";
@@ -11,14 +14,30 @@ import { IUser } from "../../store/session";
   templateUrl: './app-toolbar.component.html',
   styleUrls: ['./app-toolbar.component.scss']
 })
-export class AppToolbarComponent {
-
+export class AppToolbarComponent implements OnInit {
+  title : string;
   @Input() titleToolbar: string;
   @select(['session', 'token']) loggedIn$: Observable<string>;
   @select(['session', 'user']) user$: Observable<IUser>;
 
   constructor(private router: Router,
+              private activatedRoute: ActivatedRoute,
               private actions: SessionActions,) {}
+
+
+  ngOnInit(){
+    this.router.events
+      .filter(event => event instanceof NavigationEnd)
+      .map(() => this.activatedRoute)
+      .map(route => {
+        console.log('route: ',route);
+        while (route.firstChild) route = route.firstChild;
+        return route;
+      })
+      .filter(route => route.outlet === 'primary')
+      .mergeMap(route => route.data)
+      .subscribe((event) => this.title = event['title'] );
+  }
 
   logout() {
    this.actions.logoutUser();
