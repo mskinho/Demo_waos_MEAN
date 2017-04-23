@@ -1,44 +1,39 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { select } from '@angular-redux/store';
 import { Subscription } from 'rxjs/Subscription';
-import { NgRedux } from '@angular-redux/store';
 
 import { ToggleNavService, MenuService } from '../../services';
-import { IAppState } from '../../store';
+import { IUser } from "../../store/session";
 
 
 @Component({
   selector: 'app-app-sidenav',
   templateUrl: './app-sidenav.component.html',
   styleUrls: ['./app-sidenav.component.scss'],
-
 })
-export class AppSidenavComponent implements OnInit {
+export class AppSidenavComponent {
+
+  @ViewChild('sidenav') sidenav: ElementRef;
+
   isNormalScreen: boolean = true;
   sideNavLock: boolean = false;
   isToggled: boolean;
   subscription: Subscription;
   //Menu Item
   menuList: Array<Object> = [];
-  state:Object;
-  @select(AppSidenavComponent.isLoggedIn) loggedIn$: Observable<boolean>;
-  @ViewChild('sidenav') sidenav: ElementRef;
-  constructor(private ToggleNavService: ToggleNavService, private ngRedux: NgRedux<IAppState>, private menuService : MenuService) {
+
+  @select(['session', 'token']) loggedIn$: Observable<string>;
+  @select(['session', 'user']) user$: Observable<IUser>;
+
+  constructor(private ToggleNavService: ToggleNavService, private menuService : MenuService) {
     this.menuList =menuService.getMenu('sideNav').items;
     //subscribe toggle service
     this.subscription = this.ToggleNavService.toggle().subscribe(toggled => {
       this.isToggled = toggled;
     });
-    this.state=this.ngRedux.getState();
+  }
 
-  }
-  ngOnInit() {
-    this.ngRedux.subscribe(() =>{
-      this.state=this.ngRedux.getState();
-    })
-  }
-  static isLoggedIn(s){ return s.session.token; }
   ngAfterViewInit() {
     var sidenav = this.sidenav.nativeElement;
     if (this.getCookie("pin") == "true") {

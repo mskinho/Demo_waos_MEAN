@@ -1,14 +1,14 @@
 import { Mean2AppPage } from './app.po';
 
-describe('mean2-app App', function() {
+describe('test-angular App', () => {
   let page: Mean2AppPage;
 
   beforeEach(() => {
     page = new Mean2AppPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should  first page be defined', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toBeDefined;
   });
 });
