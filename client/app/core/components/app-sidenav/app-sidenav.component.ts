@@ -32,6 +32,7 @@ export class AppSidenavComponent {
     this.subscription = this.ToggleNavService.toggle().subscribe(toggled => {
       this.isToggled = toggled;
     });
+    this.clearCookie("pin");
   }
 
   ngAfterViewInit() {

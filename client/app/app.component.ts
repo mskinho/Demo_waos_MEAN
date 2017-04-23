@@ -22,7 +22,6 @@ import { Subscription } from 'rxjs/Subscription';
   providers: [ToggleNavService]
 })
 export class AppComponent {
-  title = 'app works!';
   isToggled: boolean;
   isNormalScreen:boolean=true;
   subscription: Subscription;
@@ -53,6 +52,5 @@ export class AppComponent {
     this.ToggleNavService.toggle().subscribe(toggled => {
       this.isToggled = toggled;
     });
-    console.log(this.subscription);
   }
 }
