@@ -1,16 +1,8 @@
  
-div {
-  margin: 10px 100px;
-  width: 100%;
-}
-
 .demo-tooltip  .centered {
     text-align: center;
-    height: 200px;
-    overflow: auto;
+}
 
-
-  }
  .demo-tooltip  .centered button {
       margin: 16px;
 }
