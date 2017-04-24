@@ -46,6 +46,8 @@ after_script:
   - nsp check
   - gulp test:coverage
   - node_modules/.bin/lcov-result-merger 'coverage/**/lcov.info' | node_modules/coveralls/bin/coveralls.js
+after_success:
+  - firebase deploy --token $FIREBASE_TOKEN
 notifications:
   webhooks:
     urls:
