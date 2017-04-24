@@ -9,6 +9,7 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent, data: { title: 'Home'} },
   { path: 'user', loadChildren:'app/users/users.module#UsersModule' },
   { path: 'articles', loadChildren:'app/articles/articles.module#ArticlesModule' },
+  { path: 'charts', loadChildren:'app/charts/charts.module#ChartsModule' },
 
   // otherwise redirect to home
   { path: '**', redirectTo: 'home' }

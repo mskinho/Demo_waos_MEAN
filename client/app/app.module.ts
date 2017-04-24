@@ -19,9 +19,13 @@ import { AppRoutingModule } from './app-routing.module';
 // APP COMPONENTS
 import { AppComponent } from "./index";
 
+// MODULES CONFIG
+import { ArticlesConfigModule } from './articles/config';
+import { ChartsConfigModule } from './charts/config';
+
+// DEFAULT MODULES
 import { CoreModule } from "./core";
 import { HomeModule } from './home/index';
-import { ArticlesConfigModule } from './articles/config';
 import { UsersModule } from "./users";
 @NgModule({
   declarations: [
@@ -37,6 +41,7 @@ import { UsersModule } from "./users";
     CoreModule,
     UsersModule.forRoot(),
     ArticlesConfigModule.forRoot(),
+    ChartsConfigModule.forRoot(),
     AppRoutingModule,
     HomeModule,
     BrowserModule
