@@ -10,7 +10,7 @@ export class ChartsConfig {
       state: 'charts',
       title: 'Charts',
       icon: 'fa-bar-chart',
-      roles: ['user', 'admin'],
+      roles: ['*'],
     })
   }
 }

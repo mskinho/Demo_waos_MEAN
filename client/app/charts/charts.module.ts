@@ -11,13 +11,12 @@ import 'chart.js';
 
 
 // CHARTS COMPONENTS
-import { ChartJsSectionComponent, BarChartComponent, PolarAreaChartComponent, RadarChartComponent } from ".";
+import { ChartJsSectionComponent, BarChartComponent, PolarAreaChartComponent, RadarChartComponent, LineChartComponent } from ".";
 // CHARTS SERVICES
 
 
 // CHARTS ROUTES
 import { ChartsRoutingModule } from ".";
-import { LineChartComponent } from './components/chart-js/charts-components/line-chart/line-chart.component';
 
 
 @NgModule({
