@@ -22,7 +22,7 @@ export class AppToolbarComponent implements OnInit {
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
-              private actions: SessionActions,) {}
+              private actions: SessionActions) {}
 
 
   ngOnInit(){

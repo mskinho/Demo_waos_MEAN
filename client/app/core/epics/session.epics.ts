@@ -51,6 +51,7 @@ export class SessionEpics {
             payload:{user : result.json()}
           }))
           .catch<Response, IPayloadAction>(err => {
+            console.log(err);
             return Observable.of({
               type: SessionActions.PUT_USER_ERROR,
               payload: { hasMessage: err.json().message }

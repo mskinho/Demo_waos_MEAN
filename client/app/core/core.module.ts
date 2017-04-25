@@ -13,8 +13,10 @@ import { AppToolbarComponent, AppSidenavComponent } from "./index";
 import { NgReduxModule, DevToolsExtension } from '@angular-redux/store';
 import { NgReduxRouterModule } from '@angular-redux/router';
 
+import { HttpInterceptorModule } from "ng-http-interceptor";
+
 // SERVICES
-import {SessionActions, SessionEpics, MenuService, ToggleNavService } from './index';
+import {SessionActions, SessionEpics, MenuService, ToggleNavService, HttpInterceptableService } from './index';
 
 
 @NgModule({
@@ -22,6 +24,7 @@ import {SessionActions, SessionEpics, MenuService, ToggleNavService } from './in
     NgReduxModule,
     RouterModule,
     NgReduxRouterModule,
+    HttpInterceptorModule,
     Angular2FontAwesomeModule,
     MaterialModule.forRoot(),
     CommonModule
@@ -35,8 +38,11 @@ import {SessionActions, SessionEpics, MenuService, ToggleNavService } from './in
     SessionActions,
     SessionEpics,
     MenuService,
-    ToggleNavService
+    ToggleNavService,
+    HttpInterceptableService
   ], 
   exports: [ AppToolbarComponent, AppSidenavComponent ]
 })
-export class CoreModule {}
+export class CoreModule {
+  constructor( private httpInterceptableService: HttpInterceptableService ) {}
+}
