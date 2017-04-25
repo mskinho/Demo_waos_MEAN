@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Router } from '@angular/router';
-import {InterceptedHttp} from "./users/services/interceptors/http.interceptor";
 
 // FONT AWESOME
 import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-awesome';

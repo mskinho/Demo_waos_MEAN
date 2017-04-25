@@ -9,6 +9,8 @@ import 'rxjs/add/operator/mergeMap';
 
 import { SessionActions } from '../../actions';
 import { IUser } from "../../store/session";
+import { ToggleNavService } from '../../services';
+
 @Component({
   selector: 'app-app-toolbar',
   templateUrl: './app-toolbar.component.html',
@@ -16,13 +18,16 @@ import { IUser } from "../../store/session";
 })
 export class AppToolbarComponent implements OnInit {
   title : string;
+  isToggled: Observable<boolean>;
+
   @Input() titleToolbar: string;
   @select(['session', 'token']) loggedIn$: Observable<string>;
   @select(['session', 'user']) user$: Observable<IUser>;
-
+  private 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
-              private actions: SessionActions,) {}
+              private actions: SessionActions, 
+              private toggleNavService: ToggleNavService) {}
 
 
   ngOnInit(){
@@ -37,6 +42,9 @@ export class AppToolbarComponent implements OnInit {
       .filter(route => route.outlet === 'primary')
       .mergeMap(route => route.data)
       .subscribe((event) => this.title = event['title'] );
+    //subscribe toggle service
+    this.isToggled= this.toggleNavService.toggle$;
+
   }
 
   logout() {

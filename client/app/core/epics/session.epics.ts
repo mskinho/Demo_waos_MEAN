@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { combineEpics } from 'redux-observable';
-import { IPayloadAction, SessionActions } from '../actions';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/mergeMap';
@@ -9,6 +8,7 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/catch';
 import { Action } from 'redux';
 import { environment } from "../../../environments/environment";
+import { IPayloadAction, SessionActions } from 'app/core';
 
 
 @Injectable()
@@ -51,6 +51,7 @@ export class SessionEpics {
             payload:{user : result.json()}
           }))
           .catch<Response, IPayloadAction>(err => {
+            console.log(err);
             return Observable.of({
               type: SessionActions.PUT_USER_ERROR,
               payload: { hasMessage: err.json().message }

@@ -12,6 +12,7 @@ import {
   enhancers
 } from './core';
 import {SessionEpics} from './core';
+import { HttpInterceptableService } from "./core";
 import { ToggleNavService } from './core';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -36,6 +37,7 @@ export class AppComponent {
     private ngRedux: NgRedux<IAppState>,
     private ngReduxRouter: NgReduxRouter,
     private epics: SessionEpics,
+    private httpInterceptableService: HttpInterceptableService,
     private ToggleNavService: ToggleNavService) {
     middleware.push(createEpicMiddleware(this.EPICS));
 

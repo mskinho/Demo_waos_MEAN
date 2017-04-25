@@ -1,7 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { select } from '@angular-redux/store';
-import { Subscription } from 'rxjs/Subscription';
 
 import { ToggleNavService, MenuService } from '../../services';
 import { IUser } from "../../store/session";
@@ -18,33 +17,31 @@ export class AppSidenavComponent {
 
   isNormalScreen: boolean = true;
   sideNavLock: boolean = false;
-  isToggled: boolean;
-  subscription: Subscription;
+  isToggled: Observable<boolean>;
   //Menu Item
   menuList: Array<Object> = [];
 
   @select(['session', 'token']) loggedIn$: Observable<string>;
   @select(['session', 'user']) user$: Observable<IUser>;
 
-  constructor(private ToggleNavService: ToggleNavService, private menuService : MenuService) {
+  constructor(private toggleNavService: ToggleNavService, private menuService : MenuService) {
     this.menuList =menuService.getMenu('sideNav').items;
     //subscribe toggle service
-    this.subscription = this.ToggleNavService.toggle().subscribe(toggled => {
-      this.isToggled = toggled;
-    });
+    this.isToggled = this.toggleNavService.toggle();
+
     this.clearCookie("pin");
   }
 
   ngAfterViewInit() {
     var sidenav = this.sidenav.nativeElement;
     if (this.getCookie("pin") == "true") {
-      this.isToggled = true;
+      this.toggleNav();
       this.sideNavLock = true;
     }
   }
   /* SideNav toggle operation*/
   toggleNav() {
-    this.ToggleNavService.toggle();
+    this.toggleNavService.toggle();
   }
   /* Pin sideNav*/
   changePinStatus() {
