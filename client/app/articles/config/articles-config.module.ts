@@ -1,5 +1,5 @@
 import { NgModule, APP_INITIALIZER, ModuleWithProviders, Injectable } from '@angular/core';
-import { MenuService } from 'app/core/services/menu.client.service';
+import { MenuService } from 'app/core';
 
 @Injectable()
 export class ArticlesConfig {

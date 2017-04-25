@@ -1,3 +1,4 @@
+import {actionTypes} from 'redux-localstorage'
 import { SessionActions, IPayloadAction } from '../../actions/session.actions';
 import { ISessionRecord } from './session.types';
 import {
@@ -5,7 +6,6 @@ import {
   INITIAL_USER_STATE,
   UserFactory,
 } from './session.initial-state';
-import {actionTypes} from 'redux-localstorage'
 
 export const sessionReducer = (
   state: ISessionRecord = INITIAL_STATE,

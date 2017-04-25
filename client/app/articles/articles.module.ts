@@ -6,21 +6,16 @@ import { MaterialModule, OverlayContainer, TooltipPosition } from '@angular/mate
 import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-awesome';
 
 // ARTICLES COMPONENTS
-import { ArticlesComponent, ArticlesListComponent, ArticleDetailsComponent, ArticleComponent } from './index';
+import { ArticlesComponent, ArticlesListComponent, ArticleDetailsComponent, ArticleComponent } from '.';
 
 // ARTICLES SERVICES
-import {ArticlesService} from './index';
+import {ArticlesService} from '.';
 
-// ARTICLE CONFIG
-// import { ArticlesConfig, articlesFactory } from './index';
-
-// ARTICLES ROUTES
-// import { ARTICLES_ROUTES } from './index';
-import { ArticlesRoutingModule } from "./articles-routing.module";
+// ARTICLES ROUTES MODULE
+import { ArticlesRoutingModule } from ".";
 
 @NgModule({
   imports: [
-    // ARTICLES_ROUTES,
     CommonModule,
     MaterialModule,
     ArticlesRoutingModule

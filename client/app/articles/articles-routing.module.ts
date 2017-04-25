@@ -2,9 +2,9 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 // ARTICLES COMPONENTS
-import { ArticlesComponent, ArticlesListComponent, ArticleDetailsComponent } from './components';
+import { ArticlesComponent, ArticlesListComponent, ArticleDetailsComponent } from '.';
 
-import { Auth } from '../users';
+import { Auth } from 'app/users';
 
 const articlesRoutes: Routes = [{
         path: '', 
