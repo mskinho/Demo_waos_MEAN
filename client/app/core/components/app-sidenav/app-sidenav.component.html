@@ -29,8 +29,8 @@
     </div>
     <div class="foot" (click)="toggleNav()">
       <a class="center-align" >
-        <i class="fa fa-angle-left fa-fw" *ngIf="isToggled" ></i>
-        <i  class="fa fa-angle-right fa-fw" *ngIf="!isToggled"></i>
+        <i class="fa fa-angle-left fa-fw" *ngIf="isToggled | async" ></i>
+        <i  class="fa fa-angle-right fa-fw" *ngIf="!(isToggled | async)"></i>
       </a>
     </div>
   </div>
