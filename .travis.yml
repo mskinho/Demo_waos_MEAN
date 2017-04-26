@@ -43,8 +43,8 @@ before_script:
 after_script:
   - nsp check
 #  - snyk test
-  - gulp test:coverage
-  - node_modules/.bin/lcov-result-merger 'coverage/**/lcov.info' | node_modules/coveralls/bin/coveralls.js
+#  - gulp test:coverage
+#  - node_modules/.bin/lcov-result-merger 'coverage/**/lcov.info' | node_modules/coveralls/bin/coveralls.js
 deploy:
 - provider: script
   skip_cleanup: true
