@@ -4,7 +4,8 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "start": "npm run prod && npm run gulp",
+    "start": "npm run prod && npm run gulp prod",
+    "demo": "ng build --env=demo && npm run gulp",
     "client": "ng serve",
     "server": "npm start",
     "prod": "ng build --prod",

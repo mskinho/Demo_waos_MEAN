@@ -44,7 +44,6 @@ export class LoginComponent implements OnInit {
     this.loggedIn$.subscribe(
       isLoggedIn => {
         if (isLoggedIn) {
-          localStorage.setItem('token', JSON.stringify({'token': isLoggedIn}));
           this.router.navigate([this.returnUrl]);
         }
 
