@@ -5,10 +5,10 @@
   "angular-cli": {},
   "scripts": {
     "start": "npm run prod && npm run gulp prod",
-    "demo": "ng build --env=demo && npm run gulp",
     "client": "ng serve",
     "server": "npm start",
     "prod": "ng build --prod",
+    "demo": "ng build --env=demo",
     "gulp": "gulp --gulpfile server/gulpfile.js",
     "lint": "tslint \"client/**/*.ts\" --project client/tsconfig.json --type-check && tslint \"e2e/**/*.ts\" --project e2e/tsconfig.json --type-check",
     "test": "snyk test && ng test",
