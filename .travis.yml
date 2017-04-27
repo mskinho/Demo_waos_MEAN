@@ -31,7 +31,7 @@ before_install:
   - npm i snyk -g
   - npm install -g @angular/cli
   - export DISPLAY=:99.0
-  - bash server/scripts/setup-protractor.sh
+  - bash scripts/setup-protractor.sh
   - sleep 3
 before_deploy:
   - eval "$(ssh-agent -s)"
