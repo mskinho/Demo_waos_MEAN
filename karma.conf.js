@@ -8,7 +8,7 @@ module.exports = function (karmaConfig) {
     frameworks: ['jasmine', '@angular/cli'],
     plugins: [
       require('karma-jasmine'),
-      require('karma-phantomjs-launcher'),
+      require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage-istanbul-reporter'),
       require('@angular/cli/plugins/karma')
@@ -55,7 +55,7 @@ module.exports = function (karmaConfig) {
     // - Safari (only Mac)
     // - PhantomJS
     // - IE (only Windows)
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
     // If browser does not capture in given timeout [ms], kill it
     captureTimeout: 60000,
     // Continuous Integration mode

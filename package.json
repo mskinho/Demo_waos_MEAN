@@ -141,7 +141,7 @@
     "karma-coverage-istanbul-reporter": "^0.2.0",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "karma-phantomjs-launcher": "~1.0.0",
+    "karma-chrome-launcher": "~1.0.0",
     "karma-remap-istanbul": "^0.2.1",
     "lcov-result-merger": "~1.2.0",
     "mock-fs": "~3.11.0",
