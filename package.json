@@ -107,6 +107,8 @@
     "@angular/compiler-cli": "^4.0.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-coverage-istanbul-reporter": "^0.2.0",
+    "karma-phantomjs-launcher": "~1.0.0",
+	  "phantomjs-prebuilt": "~2.1.14",
     "typescript": "~2.2.0",
     "@angular-redux/router": "^6.0.0",
     "@angular-redux/store": "^6.0.0",
