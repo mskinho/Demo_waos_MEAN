@@ -35,7 +35,7 @@ module.exports = function (karmaConfig) {
     },
     // Test results reporter to use
     // Possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-    reporters: karmaReporters.angularCli && karmaReporters.angularCli.codeCoverage
+    reporters: karmaConfig.angularCli && karmaConfig.angularCli.codeCoverage
               ? ['progress', 'coverage-istanbul']
               : ['progress', 'kjhtml'],
     // Web server port
