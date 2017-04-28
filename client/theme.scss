@@ -1,5 +1,7 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber';
 @import '~@angular/material/_theming';
+@import 'spinner';
+
 @include  mat-core();
 $primary: mat-palette($mat-blue-grey, 900);
 $accent: mat-palette($mat-cyan, A400);

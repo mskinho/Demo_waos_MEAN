@@ -2,24 +2,27 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 // ARTICLES COMPONENTS
-import { ArticlesComponent, ArticlesListComponent, ArticleDetailsComponent } from './components';
+import { ArticlesComponent, ArticlesListComponent, ArticleDetailsComponent } from '.';
 
-import { Auth } from '../users';
+import { Auth } from 'app/users';
 
 const articlesRoutes: Routes = [{
         path: '', 
         component: ArticlesComponent,
         canActivate: [Auth],
         data : {
-          roles : ['user', 'admin']
+          roles : ['user', 'admin'], 
+          title : 'Articles'
         }, 
         children: [{
             path: '',
-            component: ArticlesListComponent
+            component: ArticlesListComponent,
+            data : { title : 'Articles List'}
           },
           {
           path: 'article/:id',
-          component: ArticleDetailsComponent
+          component: ArticleDetailsComponent,
+          data : { title : 'Article Detail'}
         }]
       }
     ];
