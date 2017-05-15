@@ -7,13 +7,13 @@ import { ArticlesComponent, ArticlesListComponent, ArticleDetailsComponent } fro
 import { Auth } from 'app/users';
 
 const articlesRoutes: Routes = [{
-        path: '', 
+        path: '',
         component: ArticlesComponent,
         canActivate: [Auth],
         data : {
-          roles : ['user', 'admin'], 
+          roles : ['user', 'admin'],
           title : 'Articles'
-        }, 
+        },
         children: [{
             path: '',
             component: ArticlesListComponent,
@@ -26,7 +26,6 @@ const articlesRoutes: Routes = [{
         }]
       }
     ];
-  
 @NgModule({
   imports: [
     RouterModule.forChild(articlesRoutes)

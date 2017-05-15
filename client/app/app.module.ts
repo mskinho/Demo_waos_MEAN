@@ -11,7 +11,7 @@ import { MaterialModule, OverlayContainer } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import 'hammerjs';
 
-// APP ROUTING 
+// APP ROUTING
 import { AppRoutingModule } from './app-routing.module';
 
 // APP COMPONENTS
@@ -44,7 +44,7 @@ import { UsersModule } from "app/users";
     OverlayContainer],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
   // Diagnostic only: inspect router configuration
   constructor(router: Router) {
     // console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
