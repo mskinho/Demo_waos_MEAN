@@ -43,6 +43,7 @@ import { UsersModule } from "app/users";
   providers: [
     OverlayContainer],
   bootstrap: [AppComponent]
+
 })
 export class AppModule {
   // Diagnostic only: inspect router configuration

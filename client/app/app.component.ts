@@ -15,11 +15,11 @@ export class AppComponent {
   
   constructor(
     private ToggleNavService: ToggleNavService) {
-
     //subscribe toggle service
     this.ToggleNavService.toggle().subscribe(toggled => {
       this.isToggled = toggled;
     });
 
   }
+
 }

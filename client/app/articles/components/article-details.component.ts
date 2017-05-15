@@ -12,14 +12,13 @@ export class ArticleDetailsComponent implements OnInit {
   private sub: any;
   id: any;
 
-  constructor(private articlesService : ArticlesService, private route: ActivatedRoute) { }
+  constructor(private articlesService: ArticlesService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      if(params['id']){
+      if (params['id']) {
       this.articlesService.getArticle(params['id']).subscribe(
             data => {
-              console.log(data);
             this.article = data;
       });
     }
