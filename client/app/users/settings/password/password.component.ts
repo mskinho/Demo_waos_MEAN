@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { NgRedux, select } from '@angular-redux/store';
-import { IAppState } from '../../../core/store';
-import { IMessage } from "../../../core/store/session";
-import {EqualValidator} from './equal-validator.directive';
-import { SessionActions } from '../../../core/actions';
+
+import { IMessage, SessionActions } from "app/core";
+import {EqualValidator} from '.';
 
 @Component({
   selector: 'app-password',
@@ -14,16 +13,11 @@ import { SessionActions } from '../../../core/actions';
 })
 export class PasswordComponent implements OnInit {
   form: FormGroup;
-  state :IAppState;
 
   @select(['session', 'isLoading']) isLoading$: Observable<boolean>;
   @select(['session', 'hasMessage']) hasMessage$: Observable<IMessage>;
 
-
-  constructor(private actions : SessionActions, private ngRedux: NgRedux<IAppState>) {
-    this.ngRedux.subscribe(() =>{
-      this.state=this.ngRedux.getState();
-    })
+  constructor(private actions: SessionActions) {
     this.form = this._buildForm();
   }
 
@@ -37,7 +31,7 @@ export class PasswordComponent implements OnInit {
   */
   ngOnChanges(record) {
   }
-  
+
   private _buildForm() {
     return new FormGroup({
       currentPassword: new FormControl('', Validators.required),
@@ -45,7 +39,7 @@ export class PasswordComponent implements OnInit {
       verifyPassword: new FormControl('', Validators.required)
     });
   }
-  changePasword(value){
+  changePasword(value) {
     console.log(value);
     this.actions.changePassword(value);
   }

@@ -7,13 +7,13 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/catch';
 import { Action } from 'redux';
-import { environment } from "../../../environments/environment";
+import { environment } from '../../../environments/environment';
 import { IPayloadAction, SessionActions } from 'app/core';
 
 
 @Injectable()
 export class SessionEpics {
-  _baseUrl : string ;
+  _baseUrl: string ;
 
   constructor(private http: Http) {
               this._baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
@@ -26,7 +26,7 @@ export class SessionEpics {
     return action$
       .filter<IPayloadAction>(({ type }) => type === SessionActions.LOGIN_USER)
       .mergeMap<IPayloadAction, IPayloadAction>(({ payload }) => {
-        let backendURL = `${this._baseUrl}${environment.backend.endpoints.signin}` ;
+        const backendURL = `${this._baseUrl}${environment.backend.endpoints.signin}` ;
         return this.http.post(backendURL, payload)
           .map<Response, IPayloadAction>(result => ({
             type: SessionActions.LOGIN_USER_SUCCESS,
@@ -44,8 +44,8 @@ export class SessionEpics {
     return action$
       .filter<IPayloadAction>(({ type }) => type === SessionActions.PUT_USER)
       .mergeMap<IPayloadAction, IPayloadAction>(({ payload }) => {
-        let backendURL = `${this._baseUrl}${environment.backend.endpoints.users}` ;
-        return this.http.put(backendURL,payload)
+        const backendURL = `${this._baseUrl}${environment.backend.endpoints.users}` ;
+        return this.http.put(backendURL, payload)
           .map<Response, IPayloadAction>(result => ({
             type: SessionActions.PUT_USER_SUCCESS,
             payload:{user : result.json()}
@@ -65,7 +65,7 @@ export class SessionEpics {
     return action$
       .filter<IPayloadAction>(({ type }) => type === SessionActions.GET_USER)
       .mergeMap<IPayloadAction, IPayloadAction>(({ payload }) => {
-        let backendURL = `${this._baseUrl}${environment.backend.endpoints.users}/me` ;
+        const backendURL = `${this._baseUrl}${environment.backend.endpoints.profile}` ;
         return this.http.get(backendURL)
           .map<Response, IPayloadAction>(result => ({
             type: SessionActions.GET_USER_SUCCESS,
@@ -73,7 +73,7 @@ export class SessionEpics {
           }))
           .catch<any, Action>(() => Observable.of({
             type: SessionActions.GET_USER_ERROR,
-            payload: {type : 'echec',message: 'An error occurred'}
+            payload: {type : 'echec', message: 'An error occurred'}
           }));
         });
   }
@@ -82,7 +82,7 @@ export class SessionEpics {
     return action$
       .filter<IPayloadAction>(({ type }) => type === SessionActions.CHANGE_PASSWORD)
       .mergeMap<IPayloadAction, IPayloadAction>(({ payload }) => {
-        let backendURL = `${this._baseUrl}${environment.backend.endpoints.users}/password` ;
+        let backendURL = `${this._baseUrl}${environment.backend.endpoints.password}` ;
         return this.http.post(backendURL,payload)
           .map<Response, IPayloadAction>(result => ({
             type: SessionActions.CHANGE_PASSWORD_SUCCESS,

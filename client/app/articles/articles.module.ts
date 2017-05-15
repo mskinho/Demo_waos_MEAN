@@ -1,4 +1,4 @@
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER, ModuleWithProviders } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // MATERIAL DESIGN MODULES
@@ -29,7 +29,7 @@ import { CoreModule } from "app/core";
     ArticleComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: [OverlayContainer,ArticlesService],
+  providers: [OverlayContainer, ArticlesService],
 
 })
 export class ArticlesModule {}

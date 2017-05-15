@@ -2,7 +2,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IArticle } from "../services";
 @Component({
-  selector: 'app-article',
+  selector: 'article',
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.css']
 })
