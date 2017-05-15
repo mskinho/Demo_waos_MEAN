@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MaterialModule } from '@angular/material';
+import { RouterTestingModule } from '@angular/router/testing';
 import { AppSidenavComponent } from './app-sidenav.component';
+import { ToggleNavService, MenuService } from '../../services';
 
 describe('AppSidenavComponent', () => {
   let component: AppSidenavComponent;
@@ -8,7 +10,9 @@ describe('AppSidenavComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AppSidenavComponent ]
+      declarations: [ AppSidenavComponent ],
+      imports: [MaterialModule.forRoot(), RouterTestingModule],
+      providers: [ToggleNavService, MenuService]
     })
     .compileComponents();
   }));

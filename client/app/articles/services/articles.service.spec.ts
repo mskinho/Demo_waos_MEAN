@@ -1,11 +1,13 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { ArticlesService } from './articles.service';
+import {Http} from '@angular/http';
 
 describe('ArticlesService', () => {
+  const HttpMock = {};
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ArticlesService]
+      providers: [ArticlesService, {provide: Http, useValue : HttpMock}],
     });
   });
 
