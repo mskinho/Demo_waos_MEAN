@@ -1,5 +1,6 @@
 language: node_js
-sudo: false
+sudo: required
+dist: trusty
 node_js:
   - 6
   - 7
@@ -30,7 +31,7 @@ before_install:
   - npm i nsp -g
   - npm i snyk -g
   - npm install -g @angular/cli
-  - export CHROME_BIN=chromium-browser
+  # - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   # - export DISPLAY=:99.0
