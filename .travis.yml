@@ -44,6 +44,8 @@ before_deploy:
 before_script:
 #  - snyk auth $SNYK_TOKEN
 #  - snyk test
+script: 
+  - node_modules/karma/bin/karma start karma.conf.js --single-run
 after_script:
   - nsp check
   - snyk test
