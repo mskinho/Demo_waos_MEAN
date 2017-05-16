@@ -3,7 +3,9 @@
 
 // Karma configuration
 module.exports = function (karmaConfig) {
-  karmaConfig.set({
+
+
+  var configuration = {
     basePath: '',
     frameworks: ['jasmine', '@angular/cli'],
     plugins: [
@@ -13,7 +15,7 @@ module.exports = function (karmaConfig) {
       require('karma-coverage-istanbul-reporter'),
       require('@angular/cli/plugins/karma')
     ],
-    client:{
+    client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     // List of files / patterns to load in the browser
@@ -24,10 +26,10 @@ module.exports = function (karmaConfig) {
       './client/test.ts': ['@angular/cli']
     },
     mime: {
-      'text/x-typescript': ['ts','tsx']
+      'text/x-typescript': ['ts', 'tsx']
     },
     coverageIstanbulReporter: {
-      reports: [ 'html', 'lcovonly' ],
+      reports: ['html', 'lcovonly'],
       fixWebpackSourcePaths: true
     },
     angularCli: {
@@ -36,8 +38,8 @@ module.exports = function (karmaConfig) {
     // Test results reporter to use
     // Possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
     reporters: karmaConfig.angularCli && karmaConfig.angularCli.codeCoverage
-              ? ['progress', 'coverage-istanbul']
-              : ['progress', 'kjhtml'],
+      ? ['progress', 'coverage-istanbul']
+      : ['progress', 'kjhtml'],
     // Web server port
     port: 9876,
     // Enable / disable colors in the output (reporters and logs)
@@ -56,10 +58,33 @@ module.exports = function (karmaConfig) {
     // - PhantomJS
     // - IE (only Windows)
     browsers: ['Chrome'],
+    customLaunchers: {
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    },
     // If browser does not capture in given timeout [ms], kill it
     captureTimeout: 60000,
     // Continuous Integration mode
     // If true, it capture browsers, run tests and exit
     singleRun: true
-  });
+  };
+
+
+
+
+
+
+  if (process.env.TRAVIS) {
+    configuration.browsers = ['Chrome_travis_ci'];
+    // configuration.reporters = configuration.reporters.concat(['coverage', 'coveralls']);
+    // configuration.coverageReporter = {
+    //   type : 'lcovonly',
+    //   dir : 'coverage/'
+    // };
+  }
+
+  karmaConfig.set(configuration);
+
 };
