@@ -31,9 +31,9 @@ before_install:
   - npm i nsp -g
   - npm i snyk -g
   - npm install -g @angular/cli
-  # - sh -e /etc/init.d/xvfb start
-  # - export DISPLAY=:99.0
-  - bash scripts/setup-protractor.sh
+  - sh -e /etc/init.d/xvfb start
+  - export DISPLAY=:99.0
+  # - bash scripts/setup-protractor.sh
   - sleep 3
 before_deploy:
   - eval "$(ssh-agent -s)"
