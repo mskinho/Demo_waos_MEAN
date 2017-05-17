@@ -22,11 +22,10 @@ export function usersFactory(config: UsersConfig) {
 @NgModule({
   imports: [
     USERS_ROUTES,
+    MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    CommonModule,
-    HttpModule,
-    MaterialModule
+    CommonModule
   ],
   declarations: [
     LoginComponent,
