@@ -13,7 +13,7 @@ describe('PasswordComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ PasswordComponent ],
-      imports : [BrowserAnimationsModule, ReactiveFormsModule, MaterialModule.forRoot(), NgReduxModule],
+      imports : [BrowserAnimationsModule, ReactiveFormsModule, MaterialModule, NgReduxModule],
       providers: [{ provide: SessionActions, useValue: sessionActionMock }]
     })
     .compileComponents();

@@ -16,7 +16,7 @@ describe('SettingsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SettingsComponent, ProfileComponent, PasswordComponent ],
-      imports : [BrowserAnimationsModule, MaterialModule.forRoot(), ReactiveFormsModule, NgReduxModule],
+      imports : [BrowserAnimationsModule, MaterialModule, ReactiveFormsModule, NgReduxModule],
       providers: [{ provide: SessionActions, useValue: sessionActionMock }]
 
     })

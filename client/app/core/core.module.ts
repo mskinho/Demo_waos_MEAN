@@ -7,7 +7,7 @@ import { MaterialModule } from '@angular/material';
 import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-awesome';
 
 // HTTP PROVIDER
-import { Http, XHRBackend, RequestOptions } from "@angular/http";
+import { HttpModule, Http, XHRBackend, RequestOptions } from "@angular/http";
 
 // CORE COMPONENTS
 import { AppToolbarComponent, AppSidenavComponent, NotFoundPageComponent, BadRequestPageComponent } from '.';
@@ -25,7 +25,8 @@ export function httpFactory(xhrBackend: XHRBackend, requestOptions: RequestOptio
   imports: [
     RouterModule,
     Angular2FontAwesomeModule,
-    MaterialModule.forRoot(),
+    HttpModule,
+    MaterialModule,
     CommonModule
   ],
   declarations: [

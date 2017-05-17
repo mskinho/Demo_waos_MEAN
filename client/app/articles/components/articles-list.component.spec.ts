@@ -34,7 +34,7 @@ describe('ArticlesListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ArticlesListComponent, ArticleComponent],
-      imports: [MaterialModule.forRoot(), RouterTestingModule],
+      imports: [MaterialModule, RouterTestingModule],
       providers: [{ provide: ArticlesService, useClass: ArticlesServiceMock }]
     })
       .compileComponents();

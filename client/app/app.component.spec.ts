@@ -42,7 +42,7 @@ describe('AppComponent', () => {
         NgReduxTestingModule,
         RouterTestingModule,
         HttpModule,
-        MaterialModule.forRoot(),
+        MaterialModule,
         Angular2FontAwesomeModule],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
       providers: [
