@@ -1,0 +1,1 @@
+export * from './ngx-charts-section/ngx-charts-section.component';

@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
     model: any = {};
     errMessage : string;
     loading = false;
+    messageErr = null;
 
     constructor(
         private router: Router,
@@ -27,10 +28,12 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.model = new User();
     this.loading = false;
+    this.messageErr = null;
+
   }
 
   ngOnChange(record) {
-      //this.model = new User();
+      // this.model = new User();
       console.log('record:', record);
   }
 
@@ -39,13 +42,14 @@ export class RegisterComponent implements OnInit {
         this.usersService.signup(model)
             .subscribe(
                 data => {
-                    this.actions.loginUser({password :model.password ,'usernameOrEmail':model.username });
+                    this.actions.loginUser({password: model.password , 'usernameOrEmail': model.username });
                     this.router.navigate(['/']);
                 },
                 error => {
                     console.log(error);
                     this.errMessage = error.json().message;
                     this.loading = false;
+                    this.messageErr = JSON.parse(error._body).message
                 });
   }
 

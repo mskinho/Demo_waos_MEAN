@@ -4,7 +4,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SessionActions } from '../../core/actions';
 import { select } from '@angular-redux/store';
 import {Observable} from 'rxjs/Observable';
-import {NgReduxRouter} from '@angular-redux/router';
 import {  IAppState} from '../../core/store';
 import { NgRedux } from '@angular-redux/store';
 import { UsersService } from '../services/index';
@@ -17,6 +16,7 @@ import { IMessage } from "../../core/store/session";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
   returnUrl: string;
   @select(['session', 'isLoading']) isLoading$: Observable<boolean>;
   @select(['session', 'token']) loggedIn$: Observable<string>;
@@ -26,19 +26,12 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private ngReduxRouter: NgReduxRouter,
     private router: Router,
-    private actions: SessionActions,
-    private ngRedux:NgRedux<IAppState>,
-    private usersService:UsersService ) {
+    private actions: SessionActions) {
     this.form = this._buildForm();
   }
 
   ngOnInit() {
-    // reset login status
-    // this.actions.logoutUser();
-
-
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     this.loggedIn$.subscribe(
@@ -49,12 +42,10 @@ export class LoginComponent implements OnInit {
 
       },
       error => {
-        console.log("fail to check login");
+        console.log('fail to check login')
         this.actions.logoutUser();
       });
   }
-
-
 
   login(formCredentials) {
     this.actions.loginUser(formCredentials);
@@ -66,8 +57,4 @@ export class LoginComponent implements OnInit {
       password: new FormControl('', Validators.required)
     });
   }
-
-
-  static isLoggedOut(s){ return !s.session.token; }
-
 }

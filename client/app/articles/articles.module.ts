@@ -1,4 +1,4 @@
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER, ModuleWithProviders } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // MATERIAL DESIGN MODULES
@@ -13,11 +13,13 @@ import {ArticlesService} from '.';
 
 // ARTICLES ROUTES MODULE
 import { ArticlesRoutingModule } from ".";
+import { CoreModule } from "app/core";
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
+    CoreModule,
     ArticlesRoutingModule
   ],
   declarations: [
@@ -27,8 +29,7 @@ import { ArticlesRoutingModule } from ".";
     ArticleComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: [OverlayContainer,ArticlesService],
+  providers: [OverlayContainer, ArticlesService],
 
 })
-export class ArticlesModule {
-}
+export class ArticlesModule {}

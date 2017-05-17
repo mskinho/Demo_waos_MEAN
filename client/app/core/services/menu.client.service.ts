@@ -1,19 +1,17 @@
 import { Injectable } from '@angular/core';
+
 @Injectable()
 export class MenuService {
-  menus= {};
-  menuToolBar ={};
-  defaultRoles =  ['user', 'admin'];
+  menus = {};
+  menuToolBar = {};
+  defaultRoles = ['user', 'admin'];
   constructor() {
     this.addMenu('sideNav', {
-        roles: ['*']
-      }, this.menus);
-    this.addMenu('toolBar',{
-      roles : ['*']
+      roles: ['*']
+    }, this.menus);
+    this.addMenu('toolBar', {
+      roles: ['*']
     }, this.menuToolBar);
-  }
-
-  ngOnInit(){
   }
   private shouldRender(userRoles, itemMenuRoles) {
     if (itemMenuRoles.indexOf('*') !== -1) {
@@ -36,25 +34,33 @@ export class MenuService {
 
     return false;
   };
-  addMenu(menuId, options, menus){
-    options = options || {};
-      // Create the new menu
-      menus[menuId] = {
-        roles: options.roles || this.defaultRoles,
-        items: options.items || [],
-      };
-      // Return the menu object
-      return menus[menuId];
+  shouldRenderMenu(menu, userRole) {
+    for (const item in menu) {
+      if (menu[item].shouldRender(userRole, menu[item].roles)) {
+        return true;
+      }
+    }
+    return false;
   };
-  addMenuItem(menuId, options){
+  addMenu(menuId, options, menus) {
+    options = options || {};
+    // Create the new menu
+    menus[menuId] = {
+      roles: options.roles || this.defaultRoles,
+      items: options.items || [],
+    };
+    // Return the menu object
+    return menus[menuId];
+  };
+  addMenuItem(menuId, options) {
     options = options || {};
     this.validateMenuExistence(menuId);
-    if(this.validateMenuItemExistence(options.state, menuId, this.menus)){
-      if(this.menus[menuId]){
+    if (this.validateMenuItemExistence(options.state, menuId, this.menus)) {
+      if (this.menus[menuId]) {
         this.menus[menuId].items.push({
           title: options.title || '',
           state: options.state || '',
-          icon : options.icon ||'',
+          icon: options.icon || '',
           type: options.type || 'item',
           class: options.class,
           roles: ((options.roles === null || typeof options.roles === 'undefined') ? this.defaultRoles : options.roles),
@@ -64,13 +70,12 @@ export class MenuService {
         });
         return this.menus[menuId];
       }
-    }
-      else if(this.validateMenuItemExistence(options.state, menuId, this.menuToolBar)){
-       if(this.menuToolBar[menuId]){
+    } else if (this.validateMenuItemExistence(options.state, menuId, this.menuToolBar)) {
+      if (this.menuToolBar[menuId]) {
         this.menuToolBar[menuId].items.push({
           title: options.title || '',
           state: options.state || '',
-          icon : options.icon ||'',
+          icon: options.icon || '',
           type: options.type || 'item',
           class: options.class,
           roles: ((options.roles === null || typeof options.roles === 'undefined') ? this.defaultRoles : options.roles),
@@ -82,16 +87,16 @@ export class MenuService {
       return this.menuToolBar[menuId];
     }
   };
-  addSubMenuItem(){};
-  getMenu(menuId){
+  addSubMenuItem() { };
+  getMenu(menuId) {
     this.validateMenuExistence(menuId);
-      // Return the menu object
-      return this.menus[menuId]?this.menus[menuId]:this.menuToolBar[menuId];
+    // Return the menu object
+    return this.menus[menuId] ? this.menus[menuId] : this.menuToolBar[menuId];
   };
-  removeMenu(){}
-  removeMenuItem(){};
-  removeSubMenuItem(){}
-  validateMenuExistence(menuId){
+  removeMenu() { }
+  removeMenuItem() { };
+  removeSubMenuItem() { }
+  validateMenuExistence(menuId) {
     if (menuId && menuId.length) {
       if (this.menus[menuId] || this.menuToolBar[menuId]) {
         return true;
@@ -102,12 +107,11 @@ export class MenuService {
       throw new Error('MenuId was not provided');
     }
   }
-  validateMenuItemExistence(state, menuId, menus){
-    if(menus[menuId])
-    {
-      for(var item in menus[menuId].items ){
-      if(menus[menuId].items[item].state === state)
-      return false;
+  validateMenuItemExistence(state, menuId, menus) {
+    if (menus[menuId]) {
+      for (var item in menus[menuId].items) {
+        if (menus[menuId].items[item].state === state)
+          return false;
       }
       return true;
     }

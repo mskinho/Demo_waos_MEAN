@@ -2,7 +2,7 @@ export * from './models';
 export * from './services';
 export * from './login';
 export * from './register';
-export * from './list';
+export * from './users-list';
 export * from './settings';
 export * from './users.route';
 export * from './users.config';

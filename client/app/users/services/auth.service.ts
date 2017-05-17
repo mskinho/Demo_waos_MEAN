@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, CanActivateChild }    from '@angular/router';
-import { UsersService } from './users.service'
-import { NgRedux } from '@angular-redux/store';
-import { IAppState } from '../../core/store';
+import { CanActivate, CanActivateChild } from '@angular/router';
+import { select } from '@angular-redux/store';
+import { UsersService } from './users.service';
+import { Observable } from 'rxjs/Observable';
+import { IUserRecord } from 'app/core';
+
 @Injectable()
-export class Auth implements CanActivate, CanActivateChild{
+export class Auth implements CanActivate, CanActivateChild {
   userRoles = [];
-  constructor(private usersService : UsersService, 
-                private ngRedux: NgRedux<IAppState>){}
+  @select(['session', 'user']) user$: Observable<IUserRecord>;
+
+  constructor(private usersService: UsersService) {}
 
   canActivate(route) {
-    this.userRoles = JSON.parse(JSON.stringify(this.ngRedux.getState())).session.user.roles;
+    this.user$.first().subscribe(user => this.userRoles = user.roles);
     if (route.data.roles.indexOf('*') !== -1) {
         return true;
       } else {
@@ -34,4 +37,5 @@ export class Auth implements CanActivate, CanActivateChild{
     canActivateChild(route) {
       return this.canActivate(route);
     }
+
 }

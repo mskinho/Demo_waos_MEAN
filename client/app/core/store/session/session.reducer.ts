@@ -104,7 +104,7 @@ export const sessionReducer = (
             user: INITIAL_USER_STATE,
             hasError: true,
             isLoading: false,
-            hasMessage:null,
+            hasMessage: null
         });
 
         case SessionActions.CHANGE_PASSWORD:

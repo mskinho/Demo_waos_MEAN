@@ -1,16 +1,7 @@
-<section>
-  <md-card>
-  <md-card-header>
-    <div md-card-avatar></div>
-    <md-card-title>Articles</md-card-title>
-  </md-card-header>
-  <md-divider></md-divider>
-  <md-card-content>
-  <md-list>
-     <md-list-item *ngFor="let article of articles" >
-       <app-article [article]="article" class="article"></app-article>
-     </md-list-item>
-  </md-list>
-</md-card-content>
-</md-card>
+<section >
+  <md-grid-list cols="1" rowHeight="150">
+    <md-grid-tile class="grid" *ngFor="let article of articles">
+      <article [article]="article" class="article"></article>
+    </md-grid-tile>
+  </md-grid-list>
 </section>

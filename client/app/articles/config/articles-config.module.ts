@@ -3,14 +3,14 @@ import { MenuService } from 'app/core';
 
 @Injectable()
 export class ArticlesConfig {
-  constructor(private menuService : MenuService){
+  constructor(private menuService: MenuService){
   }
-  addMenu(){
+  addMenu() {
     this.menuService.addMenuItem('sideNav',{
       state: 'articles',
       title: 'Articles',
       icon: 'fa-file',
-      roles: ['user', 'admin'],
+      roles:['user', 'admin'],
     })
   }
 }

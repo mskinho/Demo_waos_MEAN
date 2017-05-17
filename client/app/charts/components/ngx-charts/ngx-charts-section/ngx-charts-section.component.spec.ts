@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListComponent } from './list.component';
+import { NgxChartsSectionComponent } from './ngx-charts-section.component';
 
-describe('ListComponent', () => {
-  let component: ListComponent;
-  let fixture: ComponentFixture<ListComponent>;
+describe('NgxChartsSectionComponent', () => {
+  let component: NgxChartsSectionComponent;
+  let fixture: ComponentFixture<NgxChartsSectionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListComponent ]
+      declarations: [ NgxChartsSectionComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListComponent);
+    fixture = TestBed.createComponent(NgxChartsSectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

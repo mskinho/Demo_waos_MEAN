@@ -1,0 +1,148 @@
+<div>
+  <div fxLayout="row">
+            <ngx-charts-number-card
+              class="chart-container"
+              (legendLabelClick)="onLegendLabelClick($event)"
+              [scheme]="colorScheme"
+              cardColor="#232837"
+              emptyColor="#1e222e"
+              [results]="single"
+              (select)="select($event)">
+            </ngx-charts-number-card>
+    </div>
+    <div fxLayout="row">
+      <ngx-charts-pie-grid
+        class="chart-container"
+        [scheme]="colorScheme"
+        (legendLabelClick)="onLegendLabelClick($event)"
+        [results]="single"
+        [tooltipDisabled]="tooltipDisabled"
+        [tooltipText]="pieTooltipText"
+        (select)="select($event)">
+      </ngx-charts-pie-grid>
+    </div>
+
+
+    <div class="container" fxLayout="row" fxLayoutAlign="space-around" >
+      <div fxFlex="49">  
+      <md-card>
+        <md-card-title>
+          Bar Chart example
+        </md-card-title>
+        <md-card-content>
+          <div style="height:250px;">
+          <ngx-charts-bar-vertical-stacked 
+            class="chart-container"
+            [scheme]="colorScheme"
+            [schemeType]="schemeType"
+            [results]="multi"
+            [gradient]="gradient"
+            [tooltipDisabled]="tooltipDisabled"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [legendTitle]="legendTitle"
+            (legendLabelClick)="onLegendLabelClick($event)"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            [showGridLines]="showGridLines"
+            [barPadding]="barPadding"
+            [roundDomains]="roundDomains"
+            (select)="select($event)">
+          </ngx-charts-bar-vertical-stacked>
+          </div>
+        </md-card-content>
+      </md-card>
+      </div>
+      <div fxFlex="49">  
+      <md-card>
+        <md-card-title>
+          Gauge Chart example
+        </md-card-title>
+        <md-card-content>
+          <div style="height:250px;">
+            <ngx-charts-gauge
+              class="chart-container"
+              [legend]="showLegend"
+              [legendTitle]="legendTitle"
+              [results]="single"
+              [textValue]="gaugeTextValue"
+              [scheme]="colorScheme"
+              [min]="gaugeMin"
+              [max]="gaugeMax"
+              [units]="gaugeUnits"
+              [angleSpan]="gaugeAngleSpan"
+              [startAngle]="gaugeStartAngle"
+              [showAxis]="gaugeShowAxis"
+              [bigSegments]="gaugeLargeSegments"
+              [smallSegments]="gaugeSmallSegments"
+              [margin]="margin ? [marginTop, marginRight, marginBottom, marginLeft] : null"
+              [tooltipDisabled]="tooltipDisabled"
+              (select)="select($event)"
+              (legendLabelClick)="onLegendLabelClick($event)">
+            </ngx-charts-gauge>
+          </div>
+        </md-card-content>
+      </md-card>
+      </div>
+    </div>
+
+    <div class="container" fxLayout="row" fxLayoutAlign="space-around" >
+      <div fxFlex="49">  
+      <md-card>
+        <md-card-title>
+          Grouped Bar Chart example
+        </md-card-title>
+        <md-card-content>
+          <div style="height:250px;">
+          <ngx-charts-bar-horizontal-2d
+            class="chart-container"
+            [scheme]="colorScheme"
+            [schemeType]="schemeType"
+            [results]="multi"
+            [gradient]="gradient"
+            [tooltipDisabled]="tooltipDisabled"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [legendTitle]="legendTitle"
+            (legendLabelClick)="onLegendLabelClick($event)"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            [showGridLines]="showGridLines"
+            [barPadding]="barPadding"
+            [groupPadding]="groupPadding"
+            [roundDomains]="roundDomains"
+            (select)="select($event)">
+          </ngx-charts-bar-horizontal-2d>
+          </div>
+        </md-card-content>
+      </md-card>
+      </div>
+      <div fxFlex="49">  
+      <md-card>
+        <md-card-title>
+          Gauge Chart example
+        </md-card-title>
+        <md-card-content>
+          <div style="height:250px;">
+            <ngx-charts-advanced-pie-chart
+              class="chart-container"
+              [scheme]="colorScheme"
+              [results]="single"
+              (legendLabelClick)="onLegendLabelClick($event)"
+              [gradient]="gradient"
+              [tooltipDisabled]="tooltipDisabled"
+              [tooltipText]="pieTooltipText"
+              (select)="select($event)">
+            </ngx-charts-advanced-pie-chart>
+          </div>
+        </md-card-content>
+      </md-card>
+      </div>
+    </div>
+</div>

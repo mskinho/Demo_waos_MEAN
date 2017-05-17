@@ -1,18 +1,18 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ChartJsSectionComponent } from ".";
+import { ChartsComponent } from ".";
 // CHARTS COMPONENTS
 
 import { Auth } from '../users';
 
-const articlesRoutes: Routes = [{
+const chartsRoutes: Routes = [{
   path: '', 
-  component: ChartJsSectionComponent,
+  component: ChartsComponent,
 }];
   
 @NgModule({
   imports: [
-    RouterModule.forChild(articlesRoutes)
+    RouterModule.forChild(chartsRoutes)
   ],
   exports: [
     RouterModule
