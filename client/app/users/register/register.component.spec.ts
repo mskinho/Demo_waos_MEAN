@@ -35,7 +35,7 @@ describe('RegisterComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [RegisterComponent],
-      imports: [ReactiveFormsModule, MaterialModule.forRoot(), RouterTestingModule, BrowserAnimationsModule],
+      imports: [ReactiveFormsModule, MaterialModule, RouterTestingModule, BrowserAnimationsModule],
       providers: [{ provide: UsersService, useClass: UsersServiceLock },
       { provide: SessionActions, useValue: sessionActionMock }]
     })

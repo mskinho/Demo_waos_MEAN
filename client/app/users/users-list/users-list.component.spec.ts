@@ -41,7 +41,7 @@ describe('UsersListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [UsersListComponent],
-      imports: [MaterialModule.forRoot(), RouterTestingModule],
+      imports: [MaterialModule, RouterTestingModule],
       providers: [
         { provide: SessionActions, useClass: SessionActionsMock },
         { provide: UsersService, useClass: UsersServiceLock }]

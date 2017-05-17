@@ -17,7 +17,7 @@ describe('DetailsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ArticleDetailsComponent ],
-      imports: [MaterialModule.forRoot(), RouterTestingModule],
+      imports: [MaterialModule, RouterTestingModule],
       providers : [{provide: ArticlesService, useValue : ArticlesServiceMock}]
     })
     .compileComponents();

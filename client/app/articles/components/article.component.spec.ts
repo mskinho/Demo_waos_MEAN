@@ -12,7 +12,7 @@ describe('ArticleComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ArticleComponent ],
-      imports: [MaterialModule.forRoot(), RouterTestingModule]
+      imports: [MaterialModule, RouterTestingModule]
     })
     .compileComponents();
   }));

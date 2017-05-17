@@ -16,7 +16,7 @@ export function homeFactory(config: HomeConfig) {
 @NgModule({
   imports: [
     HOME_ROUTES,
-    MaterialModule.forRoot(),
+    MaterialModule,
     CommonModule
   ],
   declarations: [

@@ -22,7 +22,7 @@ export function usersFactory(config: UsersConfig) {
 @NgModule({
   imports: [
     USERS_ROUTES,
-    MaterialModule.forRoot(),
+    MaterialModule,
     FormsModule,
     ReactiveFormsModule,
     CommonModule,

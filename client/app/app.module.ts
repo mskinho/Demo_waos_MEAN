@@ -9,6 +9,7 @@ import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-a
 // MATERIAL DESIGN MODULES
 import { MaterialModule, OverlayContainer } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import 'hammerjs';
 
 // APP ROUTING
@@ -30,7 +31,8 @@ import { UsersModule } from "app/users";
     ReactiveFormsModule,
     FormsModule,
     Angular2FontAwesomeModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
+    FlexLayoutModule,
     BrowserAnimationsModule, 
     StoreModule,
     CoreModule,

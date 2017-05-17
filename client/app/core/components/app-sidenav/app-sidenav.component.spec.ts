@@ -11,7 +11,7 @@ describe('AppSidenavComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AppSidenavComponent ],
-      imports: [MaterialModule.forRoot(), RouterTestingModule],
+      imports: [MaterialModule, RouterTestingModule],
       providers: [ToggleNavService, MenuService]
     })
     .compileComponents();

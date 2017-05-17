@@ -19,7 +19,7 @@ describe('AppToolbarComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AppToolbarComponent ],
-      imports: [MaterialModule.forRoot(), RouterTestingModule, Angular2FontAwesomeModule, NgReduxTestingModule],
+      imports: [MaterialModule, RouterTestingModule, Angular2FontAwesomeModule, NgReduxTestingModule],
       providers: [{provide : SessionActions, useValue : sessionActionMock}, ToggleNavService, MenuService]
     })
     .compileComponents();
