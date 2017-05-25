@@ -28,7 +28,9 @@
     "stylelint": "stylelint 'client/**/*.scss'",
     "test": "ng test",
     "test:e2e": "protractor",
-    "generate-ssl-certs": "scripts/generate-ssl-certs.sh"
+    "generate-ssl-certs": "scripts/generate-ssl-certs.sh",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "@angular/animations": "^4.0.2",
@@ -59,7 +61,7 @@
     "crypto": "0.0.3",
     "express": "^4.14.0",
     "express-hbs": "^1.0.2",
-    "express-session": "~1.14.1",
+    "express-session": "~1.15.3",
     "express-swaggerize": "farhatmo/express-swaggerize",
     "file-stream-rotator": "~0.0.6",
     "font-awesome": "^4.7.0",
@@ -67,16 +69,16 @@
     "glob": "~7.1.0",
     "gulp-ava": "^0.15.0",
     "hammerjs": "^2.0.8",
-    "helmet": "~2.3.0",
+    "helmet": "~3.6.1",
     "intl": "^1.2.5",
     "jasmine-core": "~2.5.0",
-    "jsonwebtoken": "~5.5.4",
+    "jsonwebtoken": "~7.4.1",
     "lodash": "~4.16.2",
     "lusca": "~1.4.1",
     "method-override": "~2.3.5",
     "mocha": "~3.1.0",
-    "mongoose": "~4.6.2",
-    "morgan": "~1.7.0",
+    "mongoose": "~4.10.2",
+    "morgan": "~1.8.2",
     "multer": "~1.2.0",
     "mysql": "^2.12.0",
     "nodemailer": "~2.6.4",
@@ -95,14 +97,15 @@
     "request": "^2.79.0",
     "rxjs": "^5.1.0",
     "sequelize": "^3.28.0",
-    "serve-favicon": "~2.3.0",
-    "socket.io": "^1.4.8",
+    "serve-favicon": "~2.4.3",
+    "socket.io": "^2.0.0",
     "ts-helpers": "^1.1.1",
     "tslib": "^1.6.1",
     "typescript": "^2.2.2",
     "validator": "~6.0.0",
     "winston": "^2.2.0",
-    "zone.js": "^0.8.5"
+    "zone.js": "^0.8.5",
+    "snyk": "^1.30.1"
   },
   "devDependencies": {
     "@angular-redux/router": "^6.0.0",
@@ -153,7 +156,6 @@
     "sass-loader": "^6.0.3",
     "semver": "~5.3.0",
     "should": "~11.1.0",
-    "snyk": "^1.29.0",
     "stylelint": "^7.10.1",
     "stylelint-config-primer": "^1.4.0",
     "stylelint-scss": "^1.4.4",
@@ -172,5 +174,6 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "snyk": true
 }

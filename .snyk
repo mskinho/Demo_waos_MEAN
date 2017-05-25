@@ -18,3 +18,18 @@ patch:
   'npm:uglify-js:20151024':
     - '@angular/cli > postcss-url > directory-encoder > handlebars > uglify-js':
         patched: '2017-04-20T21:36:15.843Z'
+  'npm:ms:20170412':
+    - gulp-ava > ava > ms:
+        patched: '2017-05-25T04:44:13.013Z'
+    - compression > debug > ms:
+        patched: '2017-05-25T04:44:13.013Z'
+    - express-swaggerize > swagger-tools > body-parser > debug > ms:
+        patched: '2017-05-25T04:44:13.013Z'
+    - mocha > debug > ms:
+        patched: '2017-05-25T04:44:13.013Z'
+    - socket.io > socket.io-adapter > socket.io-parser > debug > ms:
+        patched: '2017-05-25T04:44:13.013Z'
+    - socket.io > socket.io-adapter > debug > ms:
+        patched: '2017-05-25T04:44:13.013Z'
+    - socket.io > socket.io-client > debug > ms:
+        patched: '2017-05-25T04:44:13.013Z'
