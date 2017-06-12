@@ -4,7 +4,7 @@ import { RouterModule, Router } from '@angular/router';
 
 // MATERIAL DESIGN MODULES
 import { MaterialModule } from '@angular/material';
-import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-awesome';
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 // HTTP PROVIDER
 import { HttpModule, Http, XHRBackend, RequestOptions } from "@angular/http";
@@ -16,15 +16,15 @@ import { AppToolbarComponent, AppSidenavComponent, NotFoundPageComponent, BadReq
 import { SessionActions, MenuService, ToggleNavService, InterceptedHttp } from '.';
 
 export function httpFactory(xhrBackend: XHRBackend, requestOptions: RequestOptions,  router: Router, actions: SessionActions): Http {
-    return new InterceptedHttp(xhrBackend, requestOptions, router, actions);
- }
+  return new InterceptedHttp(xhrBackend, requestOptions, router, actions);
+}
 
 
 
 @NgModule({
   imports: [
     RouterModule,
-    Angular2FontAwesomeModule,
+    AngularFontAwesomeModule,
     HttpModule,
     MaterialModule,
     CommonModule
@@ -40,8 +40,8 @@ export function httpFactory(xhrBackend: XHRBackend, requestOptions: RequestOptio
     MenuService,
     ToggleNavService,
     { provide: Http,  useFactory: httpFactory, deps: [XHRBackend, RequestOptions, Router, SessionActions]}
-  ], 
-  exports: [ 
+  ],
+  exports: [
     AppToolbarComponent,
     AppSidenavComponent,
     NotFoundPageComponent,

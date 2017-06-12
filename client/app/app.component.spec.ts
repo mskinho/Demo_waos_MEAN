@@ -8,7 +8,7 @@ import { NgReduxRouter } from '@angular-redux/router';
 import { SessionEpics } from './core/index';
 import { ToggleNavService } from './core';
 import { HttpModule } from '@angular/http';
-import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-awesome';
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 import { MaterialModule } from '@angular/material';
 import { NgReduxTestingModule, MockNgRedux } from '@angular-redux/store/testing';
 import { Observable } from 'rxjs/Observable';
@@ -43,7 +43,7 @@ describe('AppComponent', () => {
         RouterTestingModule,
         HttpModule,
         MaterialModule,
-        Angular2FontAwesomeModule],
+        AngularFontAwesomeModule],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
       providers: [
         NgReduxRouter,

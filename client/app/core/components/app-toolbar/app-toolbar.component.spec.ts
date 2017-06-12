@@ -2,7 +2,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-awesome';
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 import { SessionActions } from 'app/core';
 import { AppToolbarComponent } from './app-toolbar.component';
 import { MaterialModule } from '@angular/material';
@@ -19,10 +19,10 @@ describe('AppToolbarComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AppToolbarComponent ],
-      imports: [MaterialModule, RouterTestingModule, Angular2FontAwesomeModule, NgReduxTestingModule],
+      imports: [MaterialModule, RouterTestingModule, AngularFontAwesomeModule, NgReduxTestingModule],
       providers: [{provide : SessionActions, useValue : sessionActionMock}, ToggleNavService, MenuService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
