@@ -12,7 +12,7 @@ module.exports = {
     // Enable mongoose debug mode
     debug: process.env.MONGODB_DEBUG || false
   },
-  port: process.env.PORT || 3011,
+  port: process.env.PORT || 3000,
   // orm: {
   //   dbname: 'meandev',
   //   user: '',
